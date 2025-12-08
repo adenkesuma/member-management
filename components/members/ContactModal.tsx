@@ -69,7 +69,7 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md rounded-2xl">
+      <DialogContent className="min-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-blue-600" />
@@ -95,70 +95,26 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
 
           {/* Contact Methods */}
           <div className="space-y-4">
-            {/* Email */}
-            <div className="border rounded-lg p-4 hover:border-blue-300 transition-colors">
-              <div className="flex justify-between items-start mb-3">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <Mail className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900">Email</h4>
-                    <p className="text-sm text-gray-600">Untuk komunikasi formal</p>
-                  </div>
-                </div>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="gap-2"
-                  onClick={() => handleCopy(member.email, "Email")}
-                >
-                  {copiedType === "email" ? (
-                    <Check className="h-4 w-4 text-green-600" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                  Salin
-                </Button>
-              </div>
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <a
-                  href={`mailto:${member.email}`}
-                  className="text-blue-600 hover:text-blue-800 font-medium break-all"
-                >
-                  {member.email}
-                </a>
-              </div>
-              <div className="mt-3">
-                <a href={`mailto:${member.email}`}>
-                  <Button className="w-full gap-2">
-                    <Mail className="h-4 w-4" />
-                    Kirim Email
-                  </Button>
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            {member.phone && (
-              <div className="border rounded-lg p-4 hover:border-green-300 transition-colors">
+            <div className="flex items-center gap-6">
+              {/* Email */}
+              <div className="border rounded-lg p-4 hover:border-blue-300 transition-colors">
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-green-100 rounded-lg">
-                      <Phone className="h-5 w-5 text-green-600" />
+                    <div className="p-2 bg-blue-100 rounded-lg">
+                      <Mail className="h-5 w-5 text-blue-600" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">Telepon/WhatsApp</h4>
-                      <p className="text-sm text-gray-600">Untuk komunikasi langsung</p>
+                      <h4 className="font-medium text-gray-900">Email</h4>
+                      <p className="text-sm text-gray-600">Untuk komunikasi formal</p>
                     </div>
                   </div>
                   <Button
                     size="sm"
                     variant="outline"
                     className="gap-2"
-                    onClick={() => handleCopy(member.phone!, "Nomor telepon")}
+                    onClick={() => handleCopy(member.email, "Email")}
                   >
-                    {copiedType === "phone" ? (
+                    {copiedType === "email" ? (
                       <Check className="h-4 w-4 text-green-600" />
                     ) : (
                       <Copy className="h-4 w-4" />
@@ -168,28 +124,74 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
                 </div>
                 <div className="bg-gray-50 p-3 rounded-lg">
                   <a
-                    href={`tel:${member.phone}`}
-                    className="text-green-600 hover:text-green-800 font-medium"
+                    href={`mailto:${member.email}`}
+                    className="text-blue-600 hover:text-blue-800 font-medium break-all"
                   >
-                    {member.phone}
+                    {member.email}
                   </a>
                 </div>
-                <div className="grid grid-cols-2 gap-3 mt-3">
-                  <a href={`tel:${member.phone}`}>
-                    <Button variant="outline" className="w-full gap-2">
-                      <Phone className="h-4 w-4" />
-                      Telepon
-                    </Button>
-                  </a>
-                  <a href={`https://wa.me/${member.phone?.replace(/^0/, '62')}`} target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full gap-2 bg-green-600 hover:bg-green-700">
-                      <MessageSquare className="h-4 w-4" />
-                      WhatsApp
+                <div className="mt-3">
+                  <a href={`mailto:${member.email}`}>
+                    <Button className="w-full gap-2">
+                      <Mail className="h-4 w-4" />
+                      Kirim Email
                     </Button>
                   </a>
                 </div>
               </div>
-            )}
+
+              {/* Phone */}
+              {member.phone && (
+                <div className="border rounded-lg p-4 hover:border-green-300 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-green-100 rounded-lg">
+                        <Phone className="h-5 w-5 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900">Telepon/WhatsApp</h4>
+                        <p className="text-sm text-gray-600">Untuk komunikasi langsung</p>
+                      </div>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="gap-2"
+                      onClick={() => handleCopy(member.phone!, "Nomor telepon")}
+                    >
+                      {copiedType === "phone" ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                      Salin
+                    </Button>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <a
+                      href={`tel:${member.phone}`}
+                      className="text-green-600 hover:text-green-800 font-medium"
+                    >
+                      {member.phone}
+                    </a>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 mt-3">
+                    <a href={`tel:${member.phone}`}>
+                      <Button variant="outline" className="w-full gap-2">
+                        <Phone className="h-4 w-4" />
+                        Telepon
+                      </Button>
+                    </a>
+                    <a href={`https://wa.me/${member.phone?.replace(/^0/, '62')}`} target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full gap-2 bg-green-600 hover:bg-green-700">
+                        <MessageSquare className="h-4 w-4" />
+                        WhatsApp
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Social Media */}
             {member.socialMedia && (
