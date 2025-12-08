@@ -863,7 +863,7 @@ function IndonesiaMap({
 
         {/* Branch statistics summary */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-blue-50 p-4 rounded-lg">
+          <div className="bg-gray-50 border p-4 rounded-2xl">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-blue-700">Cabang Terbanyak</div>
@@ -876,25 +876,25 @@ function IndonesiaMap({
             </div>
           </div>
           
-          <div className="bg-green-50 p-4 rounded-lg">
+          <div className="bg-gray-50 border p-4 rounded-2xl">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-green-700">Total Cabang</div>
-                <div className="text-xl font-bold text-green-900">{stats.totalBranches} Cabang</div>
+                <div className="text-sm text-blue-700">Total Cabang</div>
+                <div className="text-xl font-bold text-blue-900">{stats.totalBranches} Cabang</div>
               </div>
-              <MapPin className="h-8 w-8 text-green-600" />
+              <MapPin className="h-8 w-8 text-blue-600" />
             </div>
           </div>
           
-          <div className="bg-purple-50 p-4 rounded-lg">
+          <div className="bg-gray-50 border p-4 rounded-2xl">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-purple-700">Rata-rata Anggota</div>
-                <div className="text-xl font-bold text-purple-900">
+                <div className="text-sm text-blue-700">Rata-rata Anggota</div>
+                <div className="text-xl font-bold text-blue-900">
                   {stats.avgMembersPerBranch} / cabang
                 </div>
               </div>
-              <div className="h-8 w-8 rounded-full bg-purple-600 flex items-center justify-center">
+              <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center">
                 <span className="text-white font-bold text-sm">Ø</span>
               </div>
             </div>
