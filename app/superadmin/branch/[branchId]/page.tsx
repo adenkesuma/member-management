@@ -67,11 +67,12 @@ export default function BranchDashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Gunakan useMemo untuk mendapatkan branch data secara synchronous
-  const { branchesId } = params;
-  console.log(branchesId, 'branch id')
-  
-  const branch = branchesId 
-    ? (branchesData as Record<string, BranchData>)[branchesId]
+  const branchId = params.branchId;
+  const idBranch = Array.isArray(branchId) ? branchId[0] : branchId || '';
+  console.log(typeof branchId)  
+
+  const branch = branchId 
+    ? (branchesData as Record<string, BranchData>)[idBranch]
     : undefined;
 
   // Simulasi loading data - hanya di client side
@@ -86,19 +87,19 @@ export default function BranchDashboardPage() {
 
   // Redirect jika cabang tidak ditemukan - hanya di client side
   useEffect(() => {
-    if (typeof window !== 'undefined' && !isLoading && (!branchesId || !branch)) {
+    if (typeof window !== 'undefined' && !isLoading && (!branchId || !branch)) {
       router.push("/superadmin/dashboard");
     }
-  }, [branchesId, branch, isLoading, router]);
+  }, [branchId, branch, isLoading, router]);
 
   // Jika tidak ada branchId atau branch tidak ditemukan setelah loading
-  if (!branchesId || !branch) {
+  if (!branchId || !branch) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center p-6 bg-white rounded-2xl shadow-lg max-w-md">
           <h2 className="text-xl font-bold text-gray-900 mb-2">Cabang tidak ditemukan</h2>
           <p className="text-gray-600 mb-3">
-            Cabang dengan ID <strong>"{branchesId}"</strong> tidak ditemukan
+            Cabang dengan ID <strong>{branchId}</strong> tidak ditemukan
           </p>
           <Button onClick={() => router.push("/superadmin/dashboard")}>
             Kembali ke Dashboard
@@ -195,7 +196,7 @@ export default function BranchDashboardPage() {
                 variant="outline" 
                 size="sm" 
                 className="gap-2"
-                onClick={() => router.push(`/superadmin/branches/${branchesId}/settings`)}
+                onClick={() => router.push(`/superadmin/branches/${branchId}/settings`)}
               >
                 <Settings className="h-4 w-4" />
                 Settings
@@ -280,7 +281,7 @@ export default function BranchDashboardPage() {
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
                   <BranchMembers 
-                    branchId={branchesId}
+                    branchId={idBranch}
                     filters={{ year: selectedYear, status: selectedStatus }}
                   />
                 </CardContent>
@@ -303,7 +304,7 @@ export default function BranchDashboardPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
-                  <BranchPayments branchId={branchesId} />
+                  <BranchPayments branchId={idBranch} />
                 </CardContent>
               </Card>
             </div>
@@ -317,7 +318,7 @@ export default function BranchDashboardPage() {
                   <CardDescription className="text-white mt-1">Aktivitas 24 jam terakhir</CardDescription>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
-                  <BranchActivities branchId={branchesId} />
+                  <BranchActivities branchId={idBranch} />
                 </CardContent>
               </Card>
 

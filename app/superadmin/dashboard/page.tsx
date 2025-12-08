@@ -139,7 +139,7 @@ export default function SuperAdminDashboard() {
             <div className="flex items-center gap-4">
               <div className="w-64">
                 <Select value={selectedBranch} onValueChange={setSelectedBranch}>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <div className="flex items-center gap-2">
                       <Building2 className="h-4 w-4 text-gray-500" />
                       <SelectValue placeholder="Pilih Cabang" />
@@ -164,7 +164,7 @@ export default function SuperAdminDashboard() {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => router.push(`/superadmin/branches/${selectedBranch}`)}
+                  onClick={() => router.push(`/superadmin/branch/${selectedBranch}`)}
                 >
                   <Globe className="h-4 w-4 mr-2" />
                   Masuk ke Dashboard Cabang
