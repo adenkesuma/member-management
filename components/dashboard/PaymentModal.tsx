@@ -45,7 +45,7 @@ export default function PaymentModal({ isOpen, onClose, amount }: PaymentModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="min-w-3xl rounded-2xl">
+      <DialogContent className="min-w-3xl rounded-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Banknote className="h-5 w-5 text-blue-600" />

@@ -1,4 +1,6 @@
 // app/dashboard/page.tsx
+"use client"
+
 import PaymentHistory from "@/components/dashboard/PaymentHistory";
 import PaymentSummary from "@/components/dashboard/PaymentSummary";
 import UpcomingPayments from "@/components/dashboard/UpcomingPayments";
@@ -6,11 +8,27 @@ import MembershipStatus from "@/components/dashboard/MembershipStatus";
 import QuickPaymentActions from "@/components/dashboard/QuickPaymentActions";
 import RecentTransactions from "@/components/dashboard/RecentTransactions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bell, Calendar, CreditCard, Download } from "lucide-react";
+import { Calendar, Check, ChevronDown, ChevronUp, CreditCard, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function DashboardPage() {
+  const [expandedCards, setExpandedCards] = useState({
+    paymentHistory: true,
+    paymentSummary: true,
+    recentTransactions: true,
+    membershipStatus: true,
+    upcomingPayments: true,
+  });
+
+  const toggleCard = (cardName: keyof typeof expandedCards) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [cardName]: !prev[cardName]
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
@@ -86,7 +104,9 @@ export default function DashboardPage() {
                     <p className="text-2xl font-bold text-gray-900">Rp 0</p>
                   </div>
                   <div className="p-3 bg-green-100 rounded-xl">
-                    <div className="h-6 w-6 text-green-600 font-bold text-center">✓</div>
+                    <div className="h-6 w-6 text-green-600 font-bold text-center">
+                      <Check />
+                    </div>
                   </div>
                 </div>
                 <div className="mt-4">
@@ -122,43 +142,95 @@ export default function DashboardPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Riwayat Pembayaran Detail */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
+                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.paymentHistory ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
                   <div className="flex justify-between items-center">
                     <div>
                       <CardTitle className="text-white">Riwayat Pembayaran Detail</CardTitle>
-                      <CardDescription className="text-white">Detail lengkap semua transaksi pembayaran iuran</CardDescription>
+                      <CardDescription className="text-white mt-1">Detail lengkap semua transaksi pembayaran iuran</CardDescription>
                     </div>
-                    <Button variant="outline" size="sm" className="gap-2">
-                      <Download className="h-4 w-4" />
-                      Export Excel
-                    </Button>
+                    <div className="flex items-center gap-4">
+                      <Button variant="outline" size="sm" className="gap-2">
+                        <Download className="h-4 w-4" />
+                        Export Excel
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
+                        onClick={() => toggleCard("paymentHistory")}
+                      >
+                        {expandedCards.paymentHistory ? (
+                          <ChevronUp className="h-5 w-5" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5" />
+                        )}
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <PaymentHistory />
-                </CardContent>
+                {expandedCards.paymentHistory && (
+                  <CardContent className="p-6">
+                    <PaymentHistory />
+                  </CardContent>
+                )}
               </Card>
 
               {/* Ringkasan Pembayaran */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
-                  <CardTitle className="text-white">Ringkasan Pembayaran</CardTitle>
-                  <CardDescription className="text-white">Analisis pembayaran berdasarkan periode</CardDescription>
+                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.paymentSummary ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white">Ringkasan Pembayaran</CardTitle>
+                      <CardDescription className="text-white mt-1">Analisis pembayaran berdasarkan periode</CardDescription>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
+                      onClick={() => toggleCard("paymentSummary")}
+                    >
+                      {expandedCards.paymentSummary ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <PaymentSummary />
-                </CardContent>
+                {expandedCards.paymentSummary && (
+                  <CardContent className="p-6">
+                    <PaymentSummary />
+                  </CardContent>
+                )}
               </Card>
 
               {/* Transaksi Terbaru */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
-                  <CardTitle className="text-white">Transaksi Terbaru</CardTitle>
-                  <CardDescription className="text-white">5 transaksi pembayaran terakhir</CardDescription>
+                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.recentTransactions ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white">Transaksi Terbaru</CardTitle>
+                      <CardDescription className="mt-1 text-white">5 transaksi pembayaran terakhir</CardDescription>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
+                      onClick={() => toggleCard("recentTransactions")}
+                    >
+                      {expandedCards.recentTransactions ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <RecentTransactions />
-                </CardContent>
+                {expandedCards.recentTransactions && (
+                  <CardContent className="p-6">
+                    <RecentTransactions />
+                  </CardContent>
+                )}
               </Card>
             </div>
 
@@ -166,24 +238,60 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Status Keanggotaan */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
-                  <CardTitle className="text-white">Status Keanggotaan</CardTitle>
-                  <CardDescription className="text-white">Informasi status keanggotaan Anda</CardDescription>
+                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.membershipStatus ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white">Status Keanggotaan</CardTitle>
+                      <CardDescription className="mt-1 text-white">Informasi status keanggotaan Anda</CardDescription>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
+                      onClick={() => toggleCard("membershipStatus")}
+                    >
+                      {expandedCards.membershipStatus ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <MembershipStatus />
-                </CardContent>
+                {expandedCards.membershipStatus && (
+                  <CardContent className="p-6">
+                    <MembershipStatus />
+                  </CardContent>
+                )}
               </Card>
 
               {/* Pembayaran Mendatang */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
-                  <CardTitle className="text-white">Pembayaran Mendatang</CardTitle>
-                  <CardDescription className="text-white">Jadwal pembayaran yang akan datang</CardDescription>
+                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.upcomingPayments ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-white">Pembayaran Mendatang</CardTitle>
+                      <CardDescription className="text-white">Jadwal pembayaran yang akan datang</CardDescription>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
+                      onClick={() => toggleCard("upcomingPayments")}
+                    >
+                      {expandedCards.upcomingPayments ? (
+                        <ChevronUp className="h-5 w-5" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5" />
+                      )}
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <UpcomingPayments />
-                </CardContent>
+                {expandedCards.upcomingPayments && (
+                  <CardContent className="p-6">
+                    <UpcomingPayments />
+                  </CardContent>
+                )}
               </Card>
 
               {/* Aksi Cepat Pembayaran */}

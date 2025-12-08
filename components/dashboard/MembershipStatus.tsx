@@ -1,5 +1,5 @@
 // components/dashboard/MembershipStatus.tsx
-import { CheckCircle, Clock, AlertCircle } from "lucide-react";
+import { CheckCircle, Clock, AlertCircle, Check } from "lucide-react";
 
 export default function MembershipStatus() {
   return (
@@ -13,7 +13,7 @@ export default function MembershipStatus() {
             <p className="text-sm text-green-600">Aktif</p>
           </div>
         </div>
-        <span className="font-bold text-green-700">✓</span>
+        <span className="font-bold text-green-700"><Check /></span>
       </div>
 
       {/* Masa Aktif */}

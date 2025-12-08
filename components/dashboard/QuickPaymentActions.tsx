@@ -11,9 +11,9 @@ export default function QuickPaymentActions() {
 
   const paymentMethods = [
     { icon: <Building className="h-5 w-5" />, name: "Transfer Bank", description: "BNI, BRI, BCA, Mandiri" },
-    { icon: <CreditCard className="h-5 w-5" />, name: "Kartu Kredit", description: "Visa, Mastercard" },
-    { icon: <Smartphone className="h-5 w-5" />, name: "E-Wallet", description: "OVO, GoPay, Dana" },
-    { icon: <Wallet className="h-5 w-5" />, name: "Virtual Account", description: "VA Billing" },
+    // { icon: <CreditCard className="h-5 w-5" />, name: "Kartu Kredit", description: "Visa, Mastercard" },
+    // { icon: <Smartphone className="h-5 w-5" />, name: "E-Wallet", description: "OVO, GoPay, Dana" },
+    // { icon: <Wallet className="h-5 w-5" />, name: "Virtual Account", description: "VA Billing" },
   ];
 
   const handlePaymentClick = () => {
@@ -23,7 +23,7 @@ export default function QuickPaymentActions() {
   return (
     <>
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3">
           {paymentMethods.map((method, index) => (
             <Button
               key={index}

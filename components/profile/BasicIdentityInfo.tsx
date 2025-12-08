@@ -73,7 +73,7 @@ export default function BasicIdentityInfo() {
         <Label>Foto Profil</Label>
         <div className="flex items-center gap-4">
           <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-500">Upload Foto</span>
+            <span className="text-gray-500 text-xs">Upload Foto</span>
           </div>
           <div className="flex-1">
             <Input type="file" accept="image/*" />
