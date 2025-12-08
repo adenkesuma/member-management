@@ -30,7 +30,7 @@ export default function ProfilePage() {
                 <Save className="h-4 w-4" />
                 Simpan Perubahan
               </Button>
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                 JD
               </div>
             </div>

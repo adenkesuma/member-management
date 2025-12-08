@@ -28,7 +28,7 @@ export default function DashboardPage() {
                   Status: <span className="text-green-600 font-semibold">Aktif</span>
                 </p>
               </div>
-              <Link href={"/profile"} className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white font-bold">
+              <Link href={"/profile"} className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                 JD
               </Link>
             </div>
