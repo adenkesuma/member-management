@@ -1,7 +1,13 @@
 // components/profile/BasicIdentityInfo.tsx
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function BasicIdentityInfo() {
   return (
@@ -11,7 +17,7 @@ export default function BasicIdentityInfo() {
           <Label htmlFor="fullName">Nama lengkap sesuai KTP/SIP</Label>
           <Input id="fullName" placeholder="Masukkan nama lengkap" />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="npa">NPA / Nomor Keanggotaan PDSKKI</Label>
           <Input id="npa" placeholder="Masukkan NPA" />
@@ -20,27 +26,35 @@ export default function BasicIdentityInfo() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
+          <Label htmlFor="upload-npa">
+            Upload NPA / Nomor Keanggotaan PDSKKI
+          </Label>
+          <Input type="file" accept="image/*" />
+        </div>
+
+        <div className="space-y-2">
           <Label htmlFor="nik">NIK / No. KTP</Label>
           <Input id="nik" placeholder="Masukkan NIK" />
         </div>
-        
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="birthDate">Tanggal Lahir</Label>
           <Input id="birthDate" type="date" />
         </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="gender">Jenis Kelamin</Label>
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Pilih jenis kelamin" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="male">Laki-laki</SelectItem>
-            <SelectItem value="female">Perempuan</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="space-y-2">
+          <Label htmlFor="gender">Jenis Kelamin</Label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Pilih jenis kelamin" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="male">Laki-laki</SelectItem>
+              <SelectItem value="female">Perempuan</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <div className="space-y-2">

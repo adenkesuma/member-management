@@ -4,7 +4,13 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2 } from "lucide-react";
@@ -18,7 +24,7 @@ export default function ProfessionalInfo() {
 
   const removeSipEntry = (id: number) => {
     if (sipEntries.length > 1) {
-      setSipEntries(sipEntries.filter(entry => entry.id !== id));
+      setSipEntries(sipEntries.filter((entry) => entry.id !== id));
     }
   };
 
@@ -49,14 +55,25 @@ export default function ProfessionalInfo() {
       <div className="space-y-4 p-4 border rounded-xl">
         <div className="flex justify-between items-center">
           <h3 className="font-semibold text-lg">SIP (Surat Izin Praktik)</h3>
-          <Button type="button" variant="outline" size="sm" onClick={addSipEntry} className="gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={addSipEntry}
+            className="gap-2"
+          >
             <Plus className="h-4 w-4" /> Tambah SIP
           </Button>
         </div>
-        <p className="text-sm text-gray-500">Optional - bisa lebih dari 1 lokasi praktik</p>
+        <p className="text-sm text-gray-500">
+          Optional - bisa lebih dari 1 lokasi praktik
+        </p>
 
         {sipEntries.map((entry, index) => (
-          <div key={entry.id} className="space-y-4 p-4 border rounded-lg relative">
+          <div
+            key={entry.id}
+            className="space-y-4 p-4 border rounded-lg relative"
+          >
             {sipEntries.length > 1 && (
               <Button
                 type="button"
@@ -121,10 +138,11 @@ export default function ProfessionalInfo() {
             Anggota Biasa: Dokter umum/spesialis lain
           </p> */}
           <p className="text-sm text-gray-500">
-            Apa bedanya Dokter Keluarga dengan SP.KKLP, serta Anggota Biasa. Status Keanggotaan Residen dan Kehormatan bagaimana
+            Apa bedanya Dokter Keluarga dengan SP.KKLP, serta Anggota Biasa.
+            Status Keanggotaan Residen dan Kehormatan bagaimana
           </p>
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="graduationYear">Tahun Lulus PPDS / Profesi</Label>
           <Input id="graduationYear" type="number" placeholder="Contoh: 2020" />
@@ -168,12 +186,12 @@ export default function ProfessionalInfo() {
           <div className="space-y-2">
             <Label>Jenis Tempat Praktik</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder="Pilih tempat praktik" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="puskesmas">Puskesmas</SelectItem>
-                <SelectItem value="clinic">Klinik Utama</SelectItem>
+                <SelectItem value="clinic">Klinik</SelectItem>
                 <SelectItem value="hospital">RS</SelectItem>
                 <SelectItem value="private">Praktek Mandiri</SelectItem>
                 <SelectItem value="university">Universitas</SelectItem>
@@ -193,27 +211,39 @@ export default function ProfessionalInfo() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <div className="flex items-center gap-2">
             <input type="checkbox" id="pcc" />
-            <Label htmlFor="pcc" className="font-normal">PCC</Label>
+            <Label htmlFor="pcc" className="font-normal">
+              PCC
+            </Label>
           </div>
           <div className="flex items-center gap-2">
             <input type="checkbox" id="fomc" />
-            <Label htmlFor="fomc" className="font-normal">FOMC</Label>
+            <Label htmlFor="fomc" className="font-normal">
+              FOMC
+            </Label>
           </div>
           <div className="flex items-center gap-2">
             <input type="checkbox" id="copc" />
-            <Label htmlFor="copc" className="font-normal">COPC</Label>
+            <Label htmlFor="copc" className="font-normal">
+              COPC
+            </Label>
           </div>
           <div className="flex items-center gap-2">
             <input type="checkbox" id="preventive-oncology" />
-            <Label htmlFor="preventive-oncology" className="font-normal">Preventive Oncology</Label>
+            <Label htmlFor="preventive-oncology" className="font-normal">
+              Preventive Oncology
+            </Label>
           </div>
           <div className="flex items-center gap-2">
             <input type="checkbox" id="chronic-disease" />
-            <Label htmlFor="chronic-disease" className="font-normal">Chronic Disease Management</Label>
+            <Label htmlFor="chronic-disease" className="font-normal">
+              Chronic Disease Management
+            </Label>
           </div>
           <div className="flex items-center gap-2">
             <input type="checkbox" id="other" />
-            <Label htmlFor="other" className="font-normal">Lainnya</Label>
+            <Label htmlFor="other" className="font-normal">
+              Lainnya
+            </Label>
           </div>
         </div>
         <Textarea placeholder="Minat klinis lainnya..." className="mt-2" />

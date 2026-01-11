@@ -1,5 +1,11 @@
 // components/profile/MembershipCard.tsx
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, Share2, QrCode } from "lucide-react";
 
@@ -9,41 +15,49 @@ export default function MembershipCard() {
       <CardHeader className="pb-4">
         <div className="flex justify-between items-start">
           <div>
-            <CardTitle className="text-white">Kartu Keanggotaan Digital</CardTitle>
-            <CardDescription className="text-gray-300">PDSKKI - Official Member Card</CardDescription>
+            <CardTitle className="text-white">
+              Kartu Keanggotaan Digital
+            </CardTitle>
+            <CardDescription className="text-gray-300">
+              PDSKKI - Official Member Card
+            </CardDescription>
           </div>
           <div className="bg-gradient-to-r from-yellow-500 to-amber-600 text-black text-xs font-bold px-3 py-1 rounded-full">
             PREMIUM
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent>
         <div className="space-y-6">
           {/* Logo dan Header */}
           <div className="flex justify-between items-center">
             <div className="space-y-1">
               <h3 className="text-2xl font-bold tracking-tight">PDSKKI</h3>
-              <p className="text-sm text-gray-400">Perhimpunan Dokter Spesialis Kedokteran Keluarga Indonesia</p>
+              <p className="text-sm text-gray-400">
+                Perhimpunan Dokter Spesialis Kedokteran Keluarga Indonesia
+              </p>
             </div>
             <div className="p-3 bg-white/10 rounded-xl">
               <QrCode className="h-12 w-12" />
             </div>
           </div>
-          
+
           {/* Member Info */}
           <div className="space-y-4">
             <div>
               <p className="text-sm text-gray-400">Member ID</p>
-              <p className="text-xl font-bold tracking-wider">PDSKKI-2024-001</p>
+              <p className="text-xl font-bold tracking-wider">
+                PDSKKI-2024-001
+              </p>
             </div>
-            
+
             <div>
               <p className="text-sm text-gray-400">Nama Lengkap</p>
               <p className="text-lg font-semibold">Dr. John Doe, Sp.KKLP</p>
             </div>
-            
-            <div className="grid grid-cols-2 gap-4">
+
+            {/* <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-sm text-gray-400">Bergabung</p>
                 <p className="font-medium">15 Jan 2024</p>
@@ -52,9 +66,9 @@ export default function MembershipCard() {
                 <p className="text-sm text-gray-400">Berlaku Hingga</p>
                 <p className="font-medium text-green-400">31 Des 2025</p>
               </div>
-            </div>
+            </div> */}
           </div>
-          
+
           {/* Footer */}
           <div className="pt-4 border-t border-white/20">
             <div className="flex justify-between items-center">
@@ -68,10 +82,13 @@ export default function MembershipCard() {
               </div>
             </div>
           </div>
-          
+
           {/* Action Buttons */}
           <div className="flex gap-3 pt-4">
-            <Button variant="outline" className="flex-1 gap-2 bg-white/10 hover:bg-white/20 border-white/20">
+            <Button
+              variant="outline"
+              className="flex-1 gap-2 bg-white/10 hover:bg-white/20 border-white/20"
+            >
               <Download className="h-4 w-4" />
               Download
             </Button>

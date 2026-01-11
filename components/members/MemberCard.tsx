@@ -2,7 +2,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Calendar, Building2, UserCheck } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Building2,
+  UserCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -46,41 +53,45 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
 
   const getBranchLabel = (branchValue: string) => {
     const branches: Record<string, string> = {
-      "aceh": "Aceh",
-      "bali": "Bali",
-      "banten": "Banten",
+      aceh: "Aceh",
+      bali: "Bali",
+      banten: "Banten",
       "dki-jakarta": "DKI Jakarta",
-      "jambi": "Jambi",
+      jambi: "Jambi",
       "jawa-barat": "Jawa Barat",
       "jawa-tengah": "Jawa Tengah",
       "jawa-timur": "Jawa Timur",
       "kepulauan-riau": "Kepulauan Riau",
-      "lampung": "Lampung",
-      "riau": "Riau",
+      lampung: "Lampung",
+      riau: "Riau",
       "sulawesi-selatan": "Sulawesi Selatan",
       "sulawesi-utara": "Sulawesi Utara",
       "sumatera-barat": "Sumatera Barat",
       "sumatera-selatan": "Sumatera Selatan",
       "sumatera-utara": "Sumatera Utara",
-      "yogyakarta": "Yogyakarta",
+      yogyakarta: "Yogyakarta",
     };
     return branches[branchValue] || branchValue;
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800 border-green-200';
-      case 'inactive': return 'bg-gray-100 text-gray-800 border-gray-200';
-      case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-gray-100 text-gray-800';
+      case "active":
+        return "bg-green-100 text-green-800 border-green-200";
+      case "inactive":
+        return "bg-gray-100 text-gray-800 border-gray-200";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getInitials = (name: string) => {
     return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
       .toUpperCase()
       .slice(0, 2);
   };
@@ -90,13 +101,22 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
     ...member,
     strNumber: member.strNumber || "123456789012",
     sipNumber: member.sipNumber || "SIP/JKT/2024/001",
-    education: member.education || ["S1 Kedokteran - Universitas Indonesia", "Profesi Dokter - RSUPN Cipto Mangunkusumo", "Spesialis KKLP - Universitas Indonesia"],
-    clinicalInterests: member.clinicalInterests || ["PCC", "FOMC", "Chronic Disease Management", "Preventive Oncology"],
+    education: member.education || [
+      "S1 Kedokteran - Universitas Indonesia",
+      "Profesi Dokter - RSUPN Cipto Mangunkusumo",
+      "Spesialis KKLP - Universitas Indonesia",
+    ],
+    clinicalInterests: member.clinicalInterests || [
+      "PCC",
+      "FOMC",
+      "Chronic Disease Management",
+      "Preventive Oncology",
+    ],
     membershipType: member.membershipType || "Anggota Biasa",
     socialMedia: member.socialMedia || {
       linkedin: "https://linkedin.com/in/example",
       twitter: "https://twitter.com/example",
-    }
+    },
   };
 
   if (viewMode === "list") {
@@ -114,9 +134,15 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
               </Avatar>
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {member.name}
+                  </h3>
                   <Badge className={getStatusColor(member.status)}>
-                    {member.status === 'active' ? 'Aktif' : member.status === 'inactive' ? 'Nonaktif' : 'Dalam Proses'}
+                    {member.status === "active"
+                      ? "Aktif"
+                      : member.status === "inactive"
+                      ? "Nonaktif"
+                      : "Dalam Proses"}
                   </Badge>
                 </div>
                 <p className="text-sm text-gray-600">{member.specialization}</p>
@@ -163,17 +189,17 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
                 )}
               </div>
               <div className="flex gap-2 mt-2">
-                <Button 
-                  size="sm" 
-                  variant="outline" 
+                <Button
+                  size="sm"
+                  variant="outline"
                   className="flex-1"
                   onClick={() => setShowProfileModal(true)}
                 >
                   Lihat Profil
                 </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
+                <Button
+                  size="sm"
+                  variant="outline"
                   className="flex-1"
                   onClick={() => setShowContactModal(true)}
                 >
@@ -208,10 +234,18 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
           <div className="flex justify-between items-start mb-4">
             <div>
               <Badge className={`${getStatusColor(member.status)} mb-2`}>
-                {member.status === 'active' ? 'Aktif' : member.status === 'inactive' ? 'Nonaktif' : 'Dalam Proses'}
+                {member.status === "active"
+                  ? "Aktif"
+                  : member.status === "inactive"
+                  ? "Nonaktif"
+                  : "Dalam Proses"}
               </Badge>
-              <h3 className="text-lg font-bold text-gray-900 line-clamp-2">{member.name}</h3>
-              <p className="text-sm text-gray-600 mt-1">{member.specialization}</p>
+              <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                {member.name}
+              </h3>
+              <p className="text-sm text-gray-600 mt-1">
+                {member.specialization}
+              </p>
             </div>
             <Avatar className="h-12 w-12 border-2 border-gray-100">
               <AvatarImage src={member.photo} />
@@ -227,10 +261,10 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
               <UserCheck className="h-4 w-4" />
               <span className="font-medium">{member.npa}</span>
             </div>
-            <div className="flex items-center gap-1 text-sm text-gray-500">
+            {/* <div className="flex items-center gap-1 text-sm text-gray-500">
               <Calendar className="h-4 w-4" />
               <span>Bergabung {member.yearJoined}</span>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -246,7 +280,9 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-gray-400" />
               <div>
-                <p className="text-sm font-medium text-gray-900">{member.city}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {member.city}
+                </p>
                 <Badge variant="outline" className="mt-1">
                   {getBranchLabel(member.branch)}
                 </Badge>
@@ -266,27 +302,27 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
               <Mail className="h-4 w-4 text-gray-400" />
               <span className="text-gray-600 truncate">{member.email}</span>
             </div>
-            {member.phone && (
+            {/* {member.phone && (
               <div className="flex items-center gap-2 text-sm">
                 <Phone className="h-4 w-4 text-gray-400" />
                 <span className="text-gray-600">{member.phone}</span>
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-2 pt-4">
-            <Button 
+            {/* <Button 
               size="sm" 
               variant="outline" 
               className="flex-1"
               onClick={() => setShowProfileModal(true)}
             >
               Lihat Profil
-            </Button>
-            <Button 
-              size="sm" 
-              variant="default" 
+            </Button> */}
+            <Button
+              size="sm"
+              variant="default"
               className="flex-1 bg-blue-600 hover:bg-blue-700"
               onClick={() => setShowContactModal(true)}
             >
