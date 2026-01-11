@@ -1,5 +1,5 @@
 // app/profile/page.tsx - Halaman Profil Utama
-"use client"
+"use client";
 
 import { useState } from "react";
 import ProfileHeader from "@/components/profile/ProfileHeader";
@@ -9,9 +9,18 @@ import ProfessionalInfo from "@/components/profile/ProfessionalInfo";
 import MembershipInfo from "@/components/profile/MembershipInfo";
 import MembershipCard from "@/components/profile/MembershipCard";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Save, Bell, ChevronUp, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import KemenkesLogo from "@/public/kemenkes.png";
+import KoperasiLogo from "@/public/koperasi-dokter.jpeg";
 
 export default function ProfilePage() {
   const [expandedCards, setExpandedCards] = useState({
@@ -22,9 +31,9 @@ export default function ProfilePage() {
   });
 
   const toggleCard = (cardName: keyof typeof expandedCards) => {
-    setExpandedCards(prev => ({
+    setExpandedCards((prev) => ({
       ...prev,
-      [cardName]: !prev[cardName]
+      [cardName]: !prev[cardName],
     }));
   };
 
@@ -35,8 +44,12 @@ export default function ProfilePage() {
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard Profil Anggota</h1>
-              <p className="text-gray-600 text-sm">Kelola informasi profil dan keanggotaan PDSKKI</p>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Dashboard Profil Anggota
+              </h1>
+              <p className="text-gray-600 text-sm">
+                Kelola informasi profil dan keanggotaan PDSKKI
+              </p>
             </div>
             <div className="flex items-center gap-4">
               <Button variant="outline" className="gap-2">
@@ -65,11 +78,19 @@ export default function ProfilePage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Informasi Identitas Dasar */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className={`bg-blue-600 p-6 ${expandedCards.basicInfo ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`bg-blue-600 p-6 ${
+                    expandedCards.basicInfo ? "rounded-t-2xl" : "rounded-2xl"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Informasi Identitas Dasar</CardTitle>
-                      <CardDescription className="text-white mt-1">Data identitas sesuai KTP/SIP dan database PDSKKI</CardDescription>
+                      <CardTitle className="text-white">
+                        Informasi Identitas Dasar
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Data identitas sesuai KTP/SIP dan database PDSKKI
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
@@ -94,18 +115,26 @@ export default function ProfilePage() {
 
               {/* Informasi Kontak */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className={`bg-blue-600 p-6 ${expandedCards.contactInfo ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`bg-blue-600 p-6 ${
+                    expandedCards.contactInfo ? "rounded-t-2xl" : "rounded-2xl"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Informasi Kontak</CardTitle>
-                      <CardDescription className="text-white mt-1">Kontak utama dan alternatif untuk komunikasi resmi</CardDescription>
+                      <CardTitle className="text-white">
+                        Informasi Kontak
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Kontak utama dan alternatif untuk komunikasi resmi
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
                       onClick={() => toggleCard("contactInfo")}
-                      >
+                    >
                       {expandedCards.contactInfo ? (
                         <ChevronUp className="h-5 w-5" />
                       ) : (
@@ -123,18 +152,28 @@ export default function ProfilePage() {
 
               {/* Informasi Keprofesian */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className={`bg-blue-600 p-6 ${expandedCards.professionalInfo ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`bg-blue-600 p-6 ${
+                    expandedCards.professionalInfo
+                      ? "rounded-t-2xl"
+                      : "rounded-2xl"
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Informasi Keprofesian</CardTitle>
-                      <CardDescription className="text-white mt-1">Data STR, SIP, pendidikan, dan praktik</CardDescription>
+                      <CardTitle className="text-white">
+                        Informasi Keprofesian
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Data STR, SIP, pendidikan, dan praktik
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
                       onClick={() => toggleCard("professionalInfo")}
-                      >
+                    >
                       {expandedCards.professionalInfo ? (
                         <ChevronUp className="h-5 w-5" />
                       ) : (
@@ -168,10 +207,24 @@ export default function ProfilePage() {
                   <Button variant="outline" className="w-full justify-start gap-2" size="sm">
                     📅 Kalender Kegiatan
                   </Button> */}
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
-                    <Link href={'dashboard'}>
-                      💳 Pembayaran Iuran
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center gap-2"
+                    size="sm"
+                  >
+                    <Link href={"dashboard"}>💳 Pembayaran Iuran</Link>
+                  </Button>
+                  <Button className="w-full bg-white border hover:bg-gray-100">
+                    <Link href={"https://satusehat.kemkes.go.id/sdmk/login"}>
+                      <Image
+                        src={KemenkesLogo}
+                        className="w-20"
+                        alt="kemenkes"
+                      />
                     </Link>
+                  </Button>
+                  <Button className="w-full bg-white border hover:bg-gray-100">
+                    <Image src={KoperasiLogo} className="w-15" alt="koperasi" />
                   </Button>
                   {/* <Button variant="outline" className="w-full justify-start gap-2" size="sm">
                     📊 Statistik Keanggotaan
@@ -181,18 +234,28 @@ export default function ProfilePage() {
 
               {/* Informasi Keanggotaan PDSKKI */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className={`bg-blue-600 p-6 ${expandedCards.membershipInfo ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`bg-blue-600 p-6 ${
+                    expandedCards.membershipInfo
+                      ? "rounded-t-2xl"
+                      : "rounded-2xl"
+                  }`}
+                >
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Informasi Keanggotaan PDSKKI</CardTitle>
-                      <CardDescription className="text-white mt-1">Status, riwayat, dan kegiatan organisasi</CardDescription>
+                      <CardTitle className="text-white">
+                        Informasi Keanggotaan PDSKKI
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Status, riwayat, dan kegiatan organisasi
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="text-white hover:bg-white/20 cursor-pointer hover:text-white"
                       onClick={() => toggleCard("membershipInfo")}
-                      >
+                    >
                       {expandedCards.membershipInfo ? (
                         <ChevronUp className="h-5 w-5" />
                       ) : (
@@ -220,15 +283,21 @@ export default function ProfilePage() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Identitas Dasar</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Terverifikasi</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+                        Terverifikasi
+                      </span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm">STR & SIP</span>
-                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Perlu Perpanjangan</span>
+                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                        Perlu Perpanjangan
+                      </span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Keanggotaan</span>
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Aktif</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+                        Aktif
+                      </span>
                     </div>
                   </div>
                 </CardContent>
