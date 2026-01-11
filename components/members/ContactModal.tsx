@@ -1,7 +1,21 @@
 // components/members/ContactModal.tsx
-import { X, Mail, Phone, MessageSquare, Copy, Check, Globe, Linkedin } from "lucide-react";
+import {
+  X,
+  Mail,
+  Phone,
+  MessageSquare,
+  Copy,
+  Check,
+  Globe,
+  Linkedin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useState } from "react";
 
 interface Member {
@@ -27,7 +41,11 @@ interface ContactModalProps {
   member: Member | null;
 }
 
-export default function ContactModal({ isOpen, onClose, member }: ContactModalProps) {
+export default function ContactModal({
+  isOpen,
+  onClose,
+  member,
+}: ContactModalProps) {
   const [copiedType, setCopiedType] = useState<string | null>(null);
   const [copySuccess, setCopySuccess] = useState<string | null>(null);
 
@@ -37,7 +55,7 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
     navigator.clipboard.writeText(text);
     setCopiedType(type);
     setCopySuccess(`${type} berhasil disalin!`);
-    
+
     setTimeout(() => {
       setCopySuccess(null);
       setCopiedType(null);
@@ -46,23 +64,23 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
 
   const getBranchLabel = (branchValue: string) => {
     const branches: Record<string, string> = {
-      "aceh": "Aceh",
-      "bali": "Bali",
-      "banten": "Banten",
+      aceh: "Aceh",
+      bali: "Bali",
+      banten: "Banten",
       "dki-jakarta": "DKI Jakarta",
-      "jambi": "Jambi",
+      jambi: "Jambi",
       "jawa-barat": "Jawa Barat",
       "jawa-tengah": "Jawa Tengah",
       "jawa-timur": "Jawa Timur",
       "kepulauan-riau": "Kepulauan Riau",
-      "lampung": "Lampung",
-      "riau": "Riau",
+      lampung: "Lampung",
+      riau: "Riau",
       "sulawesi-selatan": "Sulawesi Selatan",
       "sulawesi-utara": "Sulawesi Utara",
       "sumatera-barat": "Sumatera Barat",
       "sumatera-selatan": "Sumatera Selatan",
       "sumatera-utara": "Sumatera Utara",
-      "yogyakarta": "Yogyakarta",
+      yogyakarta: "Yogyakarta",
     };
     return branches[branchValue] || branchValue;
   };
@@ -73,7 +91,7 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-blue-600" />
-            Hubungi {member.name.split(' ')[0]}
+            Hubungi {member.name.split(" ")[0]}
           </DialogTitle>
         </DialogHeader>
 
@@ -90,7 +108,9 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
           <div className="bg-blue-50 p-4 rounded-xl">
             <p className="text-sm text-gray-600">Anda akan menghubungi</p>
             <p className="text-lg font-bold text-blue-800">{member.name}</p>
-            <p className="text-sm text-gray-600 mt-1">{member.city} • {getBranchLabel(member.branch)}</p>
+            <p className="text-sm text-gray-600 mt-1">
+              {member.city} • {getBranchLabel(member.branch)}
+            </p>
           </div>
 
           {/* Contact Methods */}
@@ -105,7 +125,9 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
                     </div>
                     <div>
                       <h4 className="font-medium text-gray-900">Email</h4>
-                      <p className="text-sm text-gray-600">Untuk komunikasi formal</p>
+                      <p className="text-sm text-gray-600">
+                        Untuk komunikasi formal
+                      </p>
                     </div>
                   </div>
                   <Button
@@ -141,7 +163,7 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
               </div>
 
               {/* Phone */}
-              {member.phone && (
+              {/* {member.phone && (
                 <div className="border rounded-lg p-4 hover:border-green-300 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-3">
@@ -190,11 +212,11 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
                     </a>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Social Media */}
-            {member.socialMedia && (
+            {/* {member.socialMedia && (
               <div className="space-y-3">
                 <h4 className="font-medium text-gray-900">Media Sosial</h4>
                 <div className="grid grid-cols-2 gap-3">
@@ -230,12 +252,14 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
                   )}
                 </div>
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Contact Guidelines */}
           <div className="bg-amber-50 p-4 rounded-xl border border-amber-200">
-            <h4 className="font-medium text-amber-800 mb-2">📌 Etika Menghubungi</h4>
+            <h4 className="font-medium text-amber-800 mb-2">
+              📌 Etika Menghubungi
+            </h4>
             <ul className="text-sm text-amber-700 space-y-1">
               <li>• Sampaikan maksud dengan jelas dan sopan</li>
               <li>• Sebutkan nama dan afiliasi Anda</li>
@@ -252,7 +276,9 @@ export default function ContactModal({ isOpen, onClose, member }: ContactModalPr
           <Button
             variant="outline"
             className="flex-1 gap-2"
-            onClick={() => handleCopy(member.email, "Email dan informasi kontak")}
+            onClick={() =>
+              handleCopy(member.email, "Email dan informasi kontak")
+            }
           >
             <Copy className="h-4 w-4" />
             Salin Semua
