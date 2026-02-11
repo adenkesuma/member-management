@@ -249,7 +249,7 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
             </div>
             <Avatar className="h-12 w-12 border-2 border-gray-100">
               <AvatarImage src={member.photo} />
-              <AvatarFallback className="bg-gradient-to-br from-blue-500 to-blue-700 text-white">
+              <AvatarFallback className="bg-yellow-500 text-white">
                 {getInitials(member.name)}
               </AvatarFallback>
             </Avatar>

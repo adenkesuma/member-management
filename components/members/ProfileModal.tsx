@@ -118,11 +118,11 @@ export default function ProfileModal({
 
         <div className="space-y-6 py-4">
           {/* Header Info */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6">
+          <div className="bg-gray-50 rounded-xl p-6">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
               <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
                 <AvatarImage src={member.photo} />
-                <AvatarFallback className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white text-2xl">
+                <AvatarFallback className="bg-yellow-500 text-white text-2xl">
                   {getInitials(member.name)}
                 </AvatarFallback>
               </Avatar>
