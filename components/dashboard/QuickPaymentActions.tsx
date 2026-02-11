@@ -10,7 +10,11 @@ export default function QuickPaymentActions() {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const paymentMethods = [
-    { icon: <Building className="h-5 w-5" />, name: "Transfer Bank", description: "BNI, BRI, BCA, Mandiri" },
+    {
+      icon: <Building className="h-5 w-5" />,
+      name: "Transfer Bank",
+      description: "BNI, BRI, BCA, Mandiri",
+    },
     // { icon: <CreditCard className="h-5 w-5" />, name: "Kartu Kredit", description: "Visa, Mastercard" },
     // { icon: <Smartphone className="h-5 w-5" />, name: "E-Wallet", description: "OVO, GoPay, Dana" },
     // { icon: <Wallet className="h-5 w-5" />, name: "Virtual Account", description: "VA Billing" },
@@ -31,7 +35,7 @@ export default function QuickPaymentActions() {
               className="h-auto py-4 flex flex-col items-center justify-center gap-2 hover:border-blue-300 hover:bg-blue-50"
               onClick={handlePaymentClick}
             >
-              <div className="text-blue-600">{method.icon}</div>
+              <div className="text-primary">{method.icon}</div>
               <div className="text-center">
                 <p className="font-medium text-sm">{method.name}</p>
                 <p className="text-xs text-gray-500">{method.description}</p>
@@ -43,12 +47,11 @@ export default function QuickPaymentActions() {
         <div className="space-y-3 pt-4 border-t">
           <div className="flex justify-between items-center">
             <span className="text-gray-600">Jumlah yang harus dibayar:</span>
-            <span className="text-lg font-bold text-gray-900">Rp 2.500.000</span>
+            <span className="text-lg font-bold text-gray-900">
+              Rp 2.500.000
+            </span>
           </div>
-          <Button 
-            onClick={handlePaymentClick}
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-          >
+          <Button onClick={handlePaymentClick} className="w-full bg-0">
             Bayar Sekarang
           </Button>
           <p className="text-xs text-center text-gray-500">

@@ -56,11 +56,11 @@ export default function ProfilePage() {
                 <Bell className="h-4 w-4" />
                 Notifikasi
               </Button>
-              <Button className="gap-2 bg-blue-600 hover:bg-blue-700">
+              <Button className="gap-2 bg-primary hover:bg-primary">
                 <Save className="h-4 w-4" />
                 Simpan Perubahan
               </Button>
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
                 JD
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function ProfilePage() {
               {/* Informasi Identitas Dasar */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
                 <CardHeader
-                  className={`bg-blue-600 p-6 ${
+                  className={`bg-primary p-6 ${
                     expandedCards.basicInfo ? "rounded-t-2xl" : "rounded-2xl"
                   }`}
                 >
@@ -116,7 +116,7 @@ export default function ProfilePage() {
               {/* Informasi Kontak */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
                 <CardHeader
-                  className={`bg-blue-600 p-6 ${
+                  className={`bg-primary p-6 ${
                     expandedCards.contactInfo ? "rounded-t-2xl" : "rounded-2xl"
                   }`}
                 >
@@ -153,7 +153,7 @@ export default function ProfilePage() {
               {/* Informasi Keprofesian */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
                 <CardHeader
-                  className={`bg-blue-600 p-6 ${
+                  className={`bg-primary p-6 ${
                     expandedCards.professionalInfo
                       ? "rounded-t-2xl"
                       : "rounded-2xl"
@@ -235,7 +235,7 @@ export default function ProfilePage() {
               {/* Informasi Keanggotaan PDSKKI */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
                 <CardHeader
-                  className={`bg-blue-600 p-6 ${
+                  className={`bg-primary p-6 ${
                     expandedCards.membershipInfo
                       ? "rounded-t-2xl"
                       : "rounded-2xl"

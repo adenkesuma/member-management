@@ -179,11 +179,11 @@ export default function PaymentsPage() {
                   <span className="text-sm text-gray-600">Filter aktif:</span>
                   <div className="flex flex-wrap gap-2">
                     {searchQuery && (
-                      <div className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                      <div className="inline-flex items-center gap-1 bg-blue-50 text-primary px-3 py-1 rounded-full text-sm">
                         "{searchQuery}"
                         <button
                           onClick={() => setSearchQuery("")}
-                          className="ml-1 text-blue-500 hover:text-blue-700"
+                          className="ml-1 text-primary hover:text-primary"
                         >
                           ×
                         </button>
@@ -206,8 +206,8 @@ export default function PaymentsPage() {
                         {statusFilter === "success"
                           ? "Berhasil"
                           : statusFilter === "pending"
-                          ? "Menunggu"
-                          : "Gagal"}
+                            ? "Menunggu"
+                            : "Gagal"}
                         <button
                           onClick={() => setStatusFilter("")}
                           className="ml-1 text-purple-500 hover:text-purple-700"
@@ -253,7 +253,7 @@ export default function PaymentsPage() {
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-blue-100 rounded-lg">
                   <div className="h-6 w-6 flex items-center justify-center">
-                    <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                    <div className="w-3 h-3 rounded-full bg-primary"></div>
                   </div>
                 </div>
                 <div>
@@ -262,10 +262,10 @@ export default function PaymentsPage() {
                   </h3>
                   <p className="text-gray-700">
                     Total semua pembayaran:{" "}
-                    <strong className="text-blue-700">Rp 11.700.000</strong>
+                    <strong className="text-primary">Rp 11.700.000</strong>
                     <br />
                     Rata-rata per tahun:{" "}
-                    <strong className="text-blue-700">Rp 2.340.000</strong>
+                    <strong className="text-primary">Rp 2.340.000</strong>
                   </p>
                 </div>
               </div>
@@ -285,8 +285,7 @@ export default function PaymentsPage() {
                     Transaksi berhasil:{" "}
                     <strong className="text-green-700">24</strong>
                     <br />
-                    Tunggakan:{" "}
-                    <strong className="text-green-700">0</strong>
+                    Tunggakan: <strong className="text-green-700">0</strong>
                   </p>
                 </div>
               </div>
@@ -299,9 +298,7 @@ export default function PaymentsPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-amber-800 mb-2">
-                    Informasi
-                  </h3>
+                  <h3 className="font-bold text-amber-800 mb-2">Informasi</h3>
                   <p className="text-gray-700 text-sm">
                     Untuk pertanyaan mengenai transaksi, hubungi admin di
                     WhatsApp: <strong>0812-3456-7890</strong>

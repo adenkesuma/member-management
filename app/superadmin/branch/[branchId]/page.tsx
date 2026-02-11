@@ -31,36 +31,178 @@ import {
   Calendar,
   Settings,
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // Data cabang PDSKKI
 const branchesData = {
-  "dki-jakarta": { id: "dki-jakarta", name: "DKI Jakarta", memberCount: 250, activeMembers: 210, pendingPayments: 12, city: "Jakarta Pusat", address: "Jl. Medan Merdeka Selatan No. 13" },
-  "jawa-barat": { id: "jawa-barat", name: "Jawa Barat", memberCount: 180, activeMembers: 150, pendingPayments: 8, city: "Bandung", address: "Jl. Asia Afrika No. 65" },
-  "jawa-tengah": { id: "jawa-tengah", name: "Jawa Tengah", memberCount: 160, activeMembers: 135, pendingPayments: 6, city: "Semarang", address: "Jl. Pemuda No. 118" },
-  "jawa-timur": { id: "jawa-timur", name: "Jawa Timur", memberCount: 170, activeMembers: 145, pendingPayments: 7, city: "Surabaya", address: "Jl. Tunjungan No. 1" },
-  "bali": { id: "bali", name: "Bali", memberCount: 90, activeMembers: 75, pendingPayments: 4, city: "Denpasar", address: "Jl. Hayam Wuruk No. 139" },
-  "sumatera-utara": { id: "sumatera-utara", name: "Sumatera Utara", memberCount: 120, activeMembers: 95, pendingPayments: 5, city: "Medan", address: "Jl. Balai Kota No. 1" },
-  "sumatera-barat": { id: "sumatera-barat", name: "Sumatera Barat", memberCount: 85, activeMembers: 70, pendingPayments: 3, city: "Padang", address: "Jl. Khatib Sulaiman No. 1" },
-  "sulawesi-selatan": { id: "sulawesi-selatan", name: "Sulawesi Selatan", memberCount: 95, activeMembers: 80, pendingPayments: 4, city: "Makassar", address: "Jl. Jenderal Sudirman No. 1" },
-  "yogyakarta": { id: "yogyakarta", name: "Yogyakarta", memberCount: 75, activeMembers: 65, pendingPayments: 2, city: "Yogyakarta", address: "Jl. Malioboro No. 1" },
-  "banten": { id: "banten", name: "Banten", memberCount: 110, activeMembers: 90, pendingPayments: 5, city: "Serang", address: "Jl. Syech Nawawi Al-Bantani No. 1" },
-  "riau": { id: "riau", name: "Riau", memberCount: 70, activeMembers: 60, pendingPayments: 3, city: "Pekanbaru", address: "Jl. Jenderal Sudirman No. 460" },
-  "kepulauan-riau": { id: "kepulauan-riau", name: "Kepulauan Riau", memberCount: 45, activeMembers: 40, pendingPayments: 2, city: "Tanjung Pinang", address: "Jl. Raja H. Fisabilillah No. 1" },
-  "lampung": { id: "lampung", name: "Lampung", memberCount: 65, activeMembers: 55, pendingPayments: 3, city: "Bandar Lampung", address: "Jl. W.R. Supratman No. 1" },
-  "sumatera-selatan": { id: "sumatera-selatan", name: "Sumatera Selatan", memberCount: 60, activeMembers: 50, pendingPayments: 2, city: "Palembang", address: "Jl. Kapten A. Rivai No. 1" },
-  "jambi": { id: "jambi", name: "Jambi", memberCount: 50, activeMembers: 45, pendingPayments: 2, city: "Jambi", address: "Jl. Jenderal Basuki Rahmat No. 1" },
-  "aceh": { id: "aceh", name: "Aceh", memberCount: 40, activeMembers: 35, pendingPayments: 1, city: "Banda Aceh", address: "Jl. T. Nyak Arief No. 1" },
-  "sulawesi-utara": { id: "sulawesi-utara", name: "Sulawesi Utara", memberCount: 55, activeMembers: 45, pendingPayments: 2, city: "Manado", address: "Jl. Sam Ratulangi No. 1" },
+  "dki-jakarta": {
+    id: "dki-jakarta",
+    name: "DKI Jakarta",
+    memberCount: 250,
+    activeMembers: 210,
+    pendingPayments: 12,
+    city: "Jakarta Pusat",
+    address: "Jl. Medan Merdeka Selatan No. 13",
+  },
+  "jawa-barat": {
+    id: "jawa-barat",
+    name: "Jawa Barat",
+    memberCount: 180,
+    activeMembers: 150,
+    pendingPayments: 8,
+    city: "Bandung",
+    address: "Jl. Asia Afrika No. 65",
+  },
+  "jawa-tengah": {
+    id: "jawa-tengah",
+    name: "Jawa Tengah",
+    memberCount: 160,
+    activeMembers: 135,
+    pendingPayments: 6,
+    city: "Semarang",
+    address: "Jl. Pemuda No. 118",
+  },
+  "jawa-timur": {
+    id: "jawa-timur",
+    name: "Jawa Timur",
+    memberCount: 170,
+    activeMembers: 145,
+    pendingPayments: 7,
+    city: "Surabaya",
+    address: "Jl. Tunjungan No. 1",
+  },
+  bali: {
+    id: "bali",
+    name: "Bali",
+    memberCount: 90,
+    activeMembers: 75,
+    pendingPayments: 4,
+    city: "Denpasar",
+    address: "Jl. Hayam Wuruk No. 139",
+  },
+  "sumatera-utara": {
+    id: "sumatera-utara",
+    name: "Sumatera Utara",
+    memberCount: 120,
+    activeMembers: 95,
+    pendingPayments: 5,
+    city: "Medan",
+    address: "Jl. Balai Kota No. 1",
+  },
+  "sumatera-barat": {
+    id: "sumatera-barat",
+    name: "Sumatera Barat",
+    memberCount: 85,
+    activeMembers: 70,
+    pendingPayments: 3,
+    city: "Padang",
+    address: "Jl. Khatib Sulaiman No. 1",
+  },
+  "sulawesi-selatan": {
+    id: "sulawesi-selatan",
+    name: "Sulawesi Selatan",
+    memberCount: 95,
+    activeMembers: 80,
+    pendingPayments: 4,
+    city: "Makassar",
+    address: "Jl. Jenderal Sudirman No. 1",
+  },
+  yogyakarta: {
+    id: "yogyakarta",
+    name: "Yogyakarta",
+    memberCount: 75,
+    activeMembers: 65,
+    pendingPayments: 2,
+    city: "Yogyakarta",
+    address: "Jl. Malioboro No. 1",
+  },
+  banten: {
+    id: "banten",
+    name: "Banten",
+    memberCount: 110,
+    activeMembers: 90,
+    pendingPayments: 5,
+    city: "Serang",
+    address: "Jl. Syech Nawawi Al-Bantani No. 1",
+  },
+  riau: {
+    id: "riau",
+    name: "Riau",
+    memberCount: 70,
+    activeMembers: 60,
+    pendingPayments: 3,
+    city: "Pekanbaru",
+    address: "Jl. Jenderal Sudirman No. 460",
+  },
+  "kepulauan-riau": {
+    id: "kepulauan-riau",
+    name: "Kepulauan Riau",
+    memberCount: 45,
+    activeMembers: 40,
+    pendingPayments: 2,
+    city: "Tanjung Pinang",
+    address: "Jl. Raja H. Fisabilillah No. 1",
+  },
+  lampung: {
+    id: "lampung",
+    name: "Lampung",
+    memberCount: 65,
+    activeMembers: 55,
+    pendingPayments: 3,
+    city: "Bandar Lampung",
+    address: "Jl. W.R. Supratman No. 1",
+  },
+  "sumatera-selatan": {
+    id: "sumatera-selatan",
+    name: "Sumatera Selatan",
+    memberCount: 60,
+    activeMembers: 50,
+    pendingPayments: 2,
+    city: "Palembang",
+    address: "Jl. Kapten A. Rivai No. 1",
+  },
+  jambi: {
+    id: "jambi",
+    name: "Jambi",
+    memberCount: 50,
+    activeMembers: 45,
+    pendingPayments: 2,
+    city: "Jambi",
+    address: "Jl. Jenderal Basuki Rahmat No. 1",
+  },
+  aceh: {
+    id: "aceh",
+    name: "Aceh",
+    memberCount: 40,
+    activeMembers: 35,
+    pendingPayments: 1,
+    city: "Banda Aceh",
+    address: "Jl. T. Nyak Arief No. 1",
+  },
+  "sulawesi-utara": {
+    id: "sulawesi-utara",
+    name: "Sulawesi Utara",
+    memberCount: 55,
+    activeMembers: 45,
+    pendingPayments: 2,
+    city: "Manado",
+    address: "Jl. Sam Ratulangi No. 1",
+  },
 } as const;
 
 type BranchId = keyof typeof branchesData;
-type BranchData = typeof branchesData[BranchId];
+type BranchData = (typeof branchesData)[BranchId];
 
 export default function BranchDashboardPage() {
   const params = useParams();
   const router = useRouter();
-  
+
   // HANYA gunakan state untuk data yang benar-benar perlu diupdate setelah mount
   const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedStatus, setSelectedStatus] = useState("all");
@@ -68,16 +210,16 @@ export default function BranchDashboardPage() {
 
   // Gunakan useMemo untuk mendapatkan branch data secara synchronous
   const branchId = params.branchId;
-  const idBranch = Array.isArray(branchId) ? branchId[0] : branchId || '';
-  console.log(typeof branchId)  
+  const idBranch = Array.isArray(branchId) ? branchId[0] : branchId || "";
+  console.log(typeof branchId);
 
-  const branch = branchId 
+  const branch = branchId
     ? (branchesData as Record<string, BranchData>)[idBranch]
     : undefined;
 
   // Simulasi loading data - hanya di client side
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const timer = setTimeout(() => {
         setIsLoading(false);
       }, 300);
@@ -87,7 +229,7 @@ export default function BranchDashboardPage() {
 
   // Redirect jika cabang tidak ditemukan - hanya di client side
   useEffect(() => {
-    if (typeof window !== 'undefined' && !isLoading && (!branchId || !branch)) {
+    if (typeof window !== "undefined" && !isLoading && (!branchId || !branch)) {
       router.push("/superadmin/dashboard");
     }
   }, [branchId, branch, isLoading, router]);
@@ -97,7 +239,9 @@ export default function BranchDashboardPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center p-6 bg-white rounded-2xl shadow-lg max-w-md">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Cabang tidak ditemukan</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">
+            Cabang tidak ditemukan
+          </h2>
           <p className="text-gray-600 mb-3">
             Cabang dengan ID <strong>{branchId}</strong> tidak ditemukan
           </p>
@@ -135,11 +279,11 @@ export default function BranchDashboardPage() {
               >
                 <ArrowLeft className="size-8" />
               </Button> */}
-              
+
               <div className={`p-2 rounded-lg bg-blue-100`}>
-                <Building2 className="h-6 w-6 text-blue-600" />
+                <Building2 className="h-6 w-6 text-primary" />
               </div>
-              
+
               <div>
                 <h1 className="text-xl font-bold text-gray-900">
                   Superadmin Cabang {branch.name}
@@ -149,9 +293,9 @@ export default function BranchDashboardPage() {
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
                 {branch.name.charAt(0)}
               </div>
             </div>
@@ -162,25 +306,31 @@ export default function BranchDashboardPage() {
             <div className="flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-50 rounded-lg">
-                  <MapPin className="h-5 w-5 text-blue-600" />
+                  <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-gray-900">{branch.city}</p>
+                  <p className="font-medium text-sm text-gray-900">
+                    {branch.city}
+                  </p>
                   <p className="text-xs text-gray-500">{branch.address}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-green-50 rounded-lg">
                   <Users className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{branch.memberCount} Anggota</p>
-                  <p className="text-xs text-gray-500">{branch.activeMembers} Aktif</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    {branch.memberCount} Anggota
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {branch.activeMembers} Aktif
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -189,19 +339,27 @@ export default function BranchDashboardPage() {
                 className="gap-2"
                 disabled={isLoading}
               >
-                <RefreshCw className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`} />
+                <RefreshCw
+                  className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
+                />
                 Refresh
               </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="gap-2"
-                onClick={() => router.push(`/superadmin/branches/${branchId}/settings`)}
+                onClick={() =>
+                  router.push(`/superadmin/branches/${branchId}/settings`)
+                }
               >
                 <Settings className="h-4 w-4" />
                 Settings
               </Button>
-              <Button size="sm" onClick={handleExportData} className="gap-2 bg-blue-600">
+              <Button
+                size="sm"
+                onClick={handleExportData}
+                className="gap-2 bg-primary"
+              >
                 <Download className="h-4 w-4" />
                 Export Data
               </Button>
@@ -236,9 +394,12 @@ export default function BranchDashboardPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div className="w-full md:w-48">
-                  <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+                  <Select
+                    value={selectedStatus}
+                    onValueChange={setSelectedStatus}
+                  >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Status Anggota" />
                     </SelectTrigger>
@@ -250,7 +411,7 @@ export default function BranchDashboardPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <Button variant="outline" className="gap-2">
                   <Filter className="h-4 w-4" />
                   Filter Lainnya
@@ -265,10 +426,12 @@ export default function BranchDashboardPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Branch Members */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Anggota Cabang</CardTitle>
+                      <CardTitle className="text-white">
+                        Anggota Cabang
+                      </CardTitle>
                       <CardDescription className="text-white mt-1">
                         Daftar anggota cabang {branch.name}
                       </CardDescription>
@@ -280,7 +443,7 @@ export default function BranchDashboardPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
-                  <BranchMembers 
+                  <BranchMembers
                     branchId={idBranch}
                     filters={{ year: selectedYear, status: selectedStatus }}
                   />
@@ -289,10 +452,12 @@ export default function BranchDashboardPage() {
 
               {/* Branch Payments */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className="p-6 rounded-t-2xl bg-blue-600">
+                <CardHeader className="p-6 rounded-t-2xl bg-primary">
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Pembayaran Cabang</CardTitle>
+                      <CardTitle className="text-white">
+                        Pembayaran Cabang
+                      </CardTitle>
                       <CardDescription className="text-white mt-1">
                         Manajemen iuran anggota cabang
                       </CardDescription>
@@ -313,9 +478,11 @@ export default function BranchDashboardPage() {
             <div className="space-y-6">
               {/* Branch Activities */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <CardTitle className="text-white">Aktivitas Cabang</CardTitle>
-                  <CardDescription className="text-white mt-1">Aktivitas 24 jam terakhir</CardDescription>
+                  <CardDescription className="text-white mt-1">
+                    Aktivitas 24 jam terakhir
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
                   <BranchActivities branchId={idBranch} />
@@ -324,21 +491,25 @@ export default function BranchDashboardPage() {
 
               {/* Branch Info */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <CardTitle className="text-white">Info Cabang</CardTitle>
-                  <CardDescription className="text-white mt-1">Detail informasi cabang</CardDescription>
+                  <CardDescription className="text-white mt-1">
+                    Detail informasi cabang
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 p-6 pt-0">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-blue-100 rounded-lg">
-                      <Building2 className="h-5 w-5 text-blue-600" />
+                      <Building2 className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">{branch.name}</p>
-                      <p className="text-sm text-gray-500">ID: {branch.id.toUpperCase()}</p>
+                      <p className="text-sm text-gray-500">
+                        ID: {branch.id.toUpperCase()}
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm">
                       <MapPin className="h-4 w-4 text-gray-400" />
@@ -349,13 +520,17 @@ export default function BranchDashboardPage() {
                       <span className="text-gray-700">{branch.city}</span>
                     </div>
                   </div>
-                  
+
                   <div className="pt-4 border-t">
-                    <h4 className="font-medium text-gray-900 mb-2">Kontak Admin Cabang</h4>
+                    <h4 className="font-medium text-gray-900 mb-2">
+                      Kontak Admin Cabang
+                    </h4>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
                         <Mail className="h-4 w-4 text-gray-400" />
-                        <span className="text-gray-700">admin.{branch.id}@pdskki.com</span>
+                        <span className="text-gray-700">
+                          admin.{branch.id}@pdskki.com
+                        </span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
                         <Phone className="h-4 w-4 text-gray-400" />
@@ -368,28 +543,50 @@ export default function BranchDashboardPage() {
 
               {/* Quick Actions */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <CardTitle className="text-white">Quick Actions</CardTitle>
-                  <CardDescription className="text-white">Aksi cepat untuk cabang</CardDescription>
+                  <CardDescription className="text-white">
+                    Aksi cepat untuk cabang
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3 p-6 pt-0">
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Mail className="h-4 w-4" />
                     Kirim Broadcast Email
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Users className="h-4 w-4" />
                     Approve Anggota Baru
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <CreditCard className="h-4 w-4" />
                     Verifikasi Pembayaran
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <BarChart3 className="h-4 w-4" />
                     Laporan Cabang
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Download className="h-4 w-4" />
                     Export Data Cabang
                   </Button>

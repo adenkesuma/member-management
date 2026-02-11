@@ -19,10 +19,10 @@ export function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulasi login
     console.log("Login attempt:", formData);
-    
+
     // Redirect ke dashboard setelah 1.5 detik
     setTimeout(() => {
       setIsLoading(false);
@@ -35,7 +35,8 @@ export function LoginForm() {
     const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     });
   };
 
@@ -59,9 +60,9 @@ export function LoginForm() {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <Label htmlFor="password">Password</Label>
-            <a 
-              href="/forget-password" 
-              className="text-sm text-blue-600 hover:text-blue-500 hover:underline"
+            <a
+              href="/forget-password"
+              className="text-sm text-primary hover:text-primary hover:underline"
             >
               Lupa password?
             </a>
@@ -84,12 +85,12 @@ export function LoginForm() {
           id="remember"
           name="remember"
           checked={formData.remember}
-          onCheckedChange={(checked) => 
+          onCheckedChange={(checked) =>
             setFormData({ ...formData, remember: checked as boolean })
           }
         />
-        <Label 
-          htmlFor="remember" 
+        <Label
+          htmlFor="remember"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
           Ingat saya
@@ -97,9 +98,9 @@ export function LoginForm() {
       </div>
 
       <Button
-        size={'default'}
+        size={"default"}
         type="submit"
-        className="w-full h-11 bg-blue-600 hover:bg-blue-700"
+        className="w-full h-11 bg-primary hover:bg-primary"
         disabled={isLoading}
       >
         {isLoading ? (

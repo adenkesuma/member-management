@@ -1,7 +1,20 @@
 // components/dashboard/PaymentDetailModal.tsx
-import { X, Copy, Check, Download, Calendar, CreditCard, FileText } from "lucide-react";
+import {
+  X,
+  Copy,
+  Check,
+  Download,
+  Calendar,
+  CreditCard,
+  FileText,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Payment {
   id: number;
@@ -21,32 +34,44 @@ interface PaymentDetailModalProps {
   payment: Payment | null;
 }
 
-export default function PaymentDetailModal({ isOpen, onClose, payment }: PaymentDetailModalProps) {
+export default function PaymentDetailModal({
+  isOpen,
+  onClose,
+  payment,
+}: PaymentDetailModalProps) {
   if (!payment) return null;
 
   const formatRupiah = (amount: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
     }).format(amount);
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'success': return 'bg-green-100 text-green-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'failed': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "success":
+        return "bg-green-100 text-green-800";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800";
+      case "failed":
+        return "bg-red-100 text-red-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'success': return 'Berhasil';
-      case 'pending': return 'Menunggu';
-      case 'failed': return 'Gagal';
-      default: return status;
+      case "success":
+        return "Berhasil";
+      case "pending":
+        return "Menunggu";
+      case "failed":
+        return "Gagal";
+      default:
+        return status;
     }
   };
 
@@ -55,7 +80,7 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
       <DialogContent className="sm:max-w-lg rounded-2xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5 text-blue-600" />
+            <FileText className="h-5 w-5 text-primary" />
             Detail Pembayaran
           </DialogTitle>
         </DialogHeader>
@@ -68,11 +93,15 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
                 <h3 className="font-bold text-lg">{payment.invoice}</h3>
                 <p className="text-gray-600">{payment.description}</p>
               </div>
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(payment.status)}`}>
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(payment.status)}`}
+              >
                 {getStatusText(payment.status)}
               </span>
             </div>
-            <p className="text-2xl font-bold text-blue-700">{formatRupiah(payment.amount)}</p>
+            <p className="text-2xl font-bold text-primary">
+              {formatRupiah(payment.amount)}
+            </p>
           </div>
 
           {/* Detail Info */}
@@ -84,7 +113,7 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
                 <p className="font-medium">{payment.date}</p>
               </div>
             </div>
-            
+
             <div className="space-y-1">
               <p className="text-sm text-gray-500">Metode Pembayaran</p>
               <div className="flex items-center gap-2">
@@ -92,12 +121,12 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
                 <p className="font-medium">{payment.method}</p>
               </div>
             </div>
-            
+
             <div className="space-y-1">
               <p className="text-sm text-gray-500">Kategori</p>
               <p className="font-medium">{payment.category}</p>
             </div>
-            
+
             <div className="space-y-1">
               <p className="text-sm text-gray-500">Status Verifikasi</p>
               <p className="font-medium text-green-600">✓ Terverifikasi</p>
@@ -108,12 +137,14 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
           <div className="border rounded-lg p-4">
             <h4 className="font-medium mb-2">Keterangan Pembayaran</h4>
             <p className="text-gray-700 text-sm">
-              Pembayaran {payment.description.toLowerCase()} untuk keanggotaan PDSKKI tahun {payment.date.slice(-4)}.
-              Status pembayaran sudah diverifikasi oleh admin.
+              Pembayaran {payment.description.toLowerCase()} untuk keanggotaan
+              PDSKKI tahun {payment.date.slice(-4)}. Status pembayaran sudah
+              diverifikasi oleh admin.
             </p>
             <div className="mt-3 p-3 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-600">
-                <strong>Keterangan Transfer:</strong> {payment.invoice} - {payment.description}
+                <strong>Keterangan Transfer:</strong> {payment.invoice} -{" "}
+                {payment.description}
               </p>
             </div>
           </div>
@@ -133,7 +164,9 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
               </div>
             ) : (
               <div className="text-center p-6 bg-gray-50 rounded-lg">
-                <p className="text-gray-500">Tidak ada bukti transfer yang diunggah</p>
+                <p className="text-gray-500">
+                  Tidak ada bukti transfer yang diunggah
+                </p>
               </div>
             )}
           </div>
@@ -143,7 +176,7 @@ export default function PaymentDetailModal({ isOpen, onClose, payment }: Payment
           <Button variant="outline" onClick={onClose} className="flex-1">
             Tutup
           </Button>
-          <Button className="flex-1 bg-blue-600 hover:bg-blue-700 gap-2">
+          <Button className="flex-1 bg-primary hover:bg-primary gap-2">
             <Download className="h-4 w-4" />
             Download Invoice
           </Button>

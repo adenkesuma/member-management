@@ -92,7 +92,7 @@ export default function MembershipCard() {
               <Download className="h-4 w-4" />
               Download
             </Button>
-            <Button className="flex-1 gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+            <Button className="flex-1 gap-2 bg-primary">
               <Share2 className="h-4 w-4" />
               Bagikan
             </Button>

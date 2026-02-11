@@ -16,15 +16,15 @@ export default function UpcomingPayments() {
       description: "Iuran Tahunan 2025",
       dueDate: "15 Jan 2025",
       amount: 2500000,
-      daysLeft: 45
+      daysLeft: 45,
     },
     {
       id: 2,
       description: "Iuran Keanggotaan Q2 2024",
       dueDate: "30 Mar 2024",
       amount: 625000,
-      daysLeft: 12
-    }
+      daysLeft: 12,
+    },
   ];
 
   const handlePayNow = (amount: number) => {
@@ -33,10 +33,10 @@ export default function UpcomingPayments() {
   };
 
   const formatRupiah = (amount: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
     }).format(amount);
   };
 
@@ -44,18 +44,25 @@ export default function UpcomingPayments() {
     <>
       <div className="space-y-4">
         {upcoming.map((item) => (
-          <div key={item.id} className="p-4 border rounded-xl hover:border-blue-300 transition-colors">
+          <div
+            key={item.id}
+            className="p-4 border rounded-xl hover:border-blue-300 transition-colors"
+          >
             <div className="flex justify-between items-start mb-3">
               <div>
-                <h4 className="font-medium text-gray-900">{item.description}</h4>
+                <h4 className="font-medium text-gray-900">
+                  {item.description}
+                </h4>
                 <div className="flex items-center gap-2 mt-1 text-sm text-gray-600">
                   <Calendar className="h-4 w-4" />
                   <span>Jatuh tempo: {item.dueDate}</span>
                 </div>
               </div>
-              <span className="text-lg font-bold text-gray-900">{formatRupiah(item.amount)}</span>
+              <span className="text-lg font-bold text-gray-900">
+                {formatRupiah(item.amount)}
+              </span>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-amber-600" />
@@ -63,9 +70,9 @@ export default function UpcomingPayments() {
                   {item.daysLeft} hari lagi
                 </span>
               </div>
-              <Button 
-                size="sm" 
-                className="bg-blue-600 hover:bg-blue-700"
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-primary"
                 onClick={() => handlePayNow(item.amount)}
               >
                 Bayar Sekarang
@@ -76,7 +83,9 @@ export default function UpcomingPayments() {
 
         <div className="pt-4 border-t">
           <div className="text-center">
-            <p className="text-sm text-gray-600 mb-2">Tidak ada pembayaran mendatang lainnya</p>
+            <p className="text-sm text-gray-600 mb-2">
+              Tidak ada pembayaran mendatang lainnya
+            </p>
             <Button variant="outline" size="sm" className="w-full">
               Lihat Jadwal Lengkap
             </Button>

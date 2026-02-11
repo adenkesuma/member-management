@@ -90,7 +90,7 @@ export default function ContactModal({
       <DialogContent className="min-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <MessageSquare className="h-5 w-5 text-blue-600" />
+            <MessageSquare className="h-5 w-5 text-primary" />
             Hubungi {member.name.split(" ")[0]}
           </DialogTitle>
         </DialogHeader>
@@ -121,7 +121,7 @@ export default function ContactModal({
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-blue-100 rounded-lg">
-                      <Mail className="h-5 w-5 text-blue-600" />
+                      <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-medium text-gray-900">Email</h4>
@@ -147,7 +147,7 @@ export default function ContactModal({
                 <div className="bg-gray-50 p-3 rounded-lg">
                   <a
                     href={`mailto:${member.email}`}
-                    className="text-blue-600 hover:text-blue-800 font-medium break-all"
+                    className="text-primary hover:text-blue-800 font-medium break-all"
                   >
                     {member.email}
                   </a>
@@ -229,7 +229,7 @@ export default function ContactModal({
                     >
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-blue-100 rounded-lg">
-                          <Linkedin className="h-5 w-5 text-blue-600" />
+                          <Linkedin className="h-5 w-5 text-primary" />
                         </div>
                         <span className="font-medium">LinkedIn</span>
                       </div>

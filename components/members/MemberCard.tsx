@@ -128,7 +128,7 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
             <div className="flex items-center gap-4">
               <Avatar className="h-16 w-16 border-2 border-gray-100">
                 <AvatarImage src={member.photo} />
-                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-blue-700 text-white text-lg">
+                <AvatarFallback className="bg-primary text-white text-lg">
                   {getInitials(member.name)}
                 </AvatarFallback>
               </Avatar>
@@ -141,8 +141,8 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
                     {member.status === "active"
                       ? "Aktif"
                       : member.status === "inactive"
-                      ? "Nonaktif"
-                      : "Dalam Proses"}
+                        ? "Nonaktif"
+                        : "Dalam Proses"}
                   </Badge>
                 </div>
                 <p className="text-sm text-gray-600">{member.specialization}</p>
@@ -237,8 +237,8 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
                 {member.status === "active"
                   ? "Aktif"
                   : member.status === "inactive"
-                  ? "Nonaktif"
-                  : "Dalam Proses"}
+                    ? "Nonaktif"
+                    : "Dalam Proses"}
               </Badge>
               <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
                 {member.name}
@@ -312,18 +312,18 @@ export default function MemberCard({ member, viewMode }: MemberCardProps) {
 
           {/* Action Buttons */}
           <div className="flex gap-2 pt-4">
-            {/* <Button 
-              size="sm" 
-              variant="outline" 
+            <Button
+              size="sm"
+              variant="outline"
               className="flex-1"
               onClick={() => setShowProfileModal(true)}
             >
               Lihat Profil
-            </Button> */}
+            </Button>
             <Button
               size="sm"
               variant="default"
-              className="flex-1 bg-blue-600 hover:bg-blue-700"
+              className="flex-1 bg-primary hover:bg-primary"
               onClick={() => setShowContactModal(true)}
             >
               Hubungi

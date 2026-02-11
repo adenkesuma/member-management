@@ -4,11 +4,11 @@ import { Badge } from "@/components/ui/badge";
 
 export default function ProfileHeader() {
   return (
-    <div className="bg-blue-600 rounded-2xl p-6 text-white shadow-sm">
+    <div className="bg-primary rounded-2xl p-6 text-white shadow-sm">
       <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
         <Avatar className="w-24 h-24 border-4 border-white/20">
           <AvatarImage src="/api/placeholder/96/96" />
-          <AvatarFallback className="text-2xl text-blue-600">JD</AvatarFallback>
+          <AvatarFallback className="text-2xl text-primary">JD</AvatarFallback>
         </Avatar>
 
         <div className="flex-1">

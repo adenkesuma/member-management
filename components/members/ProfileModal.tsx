@@ -13,7 +13,12 @@ import {
   Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
@@ -49,46 +54,54 @@ interface ProfileModalProps {
   member: Member | null;
 }
 
-export default function ProfileModal({ isOpen, onClose, member }: ProfileModalProps) {
+export default function ProfileModal({
+  isOpen,
+  onClose,
+  member,
+}: ProfileModalProps) {
   if (!member) return null;
 
   const getBranchLabel = (branchValue: string) => {
     const branches: Record<string, string> = {
-      "aceh": "Aceh",
-      "bali": "Bali",
-      "banten": "Banten",
+      aceh: "Aceh",
+      bali: "Bali",
+      banten: "Banten",
       "dki-jakarta": "DKI Jakarta",
-      "jambi": "Jambi",
+      jambi: "Jambi",
       "jawa-barat": "Jawa Barat",
       "jawa-tengah": "Jawa Tengah",
       "jawa-timur": "Jawa Timur",
       "kepulauan-riau": "Kepulauan Riau",
-      "lampung": "Lampung",
-      "riau": "Riau",
+      lampung: "Lampung",
+      riau: "Riau",
       "sulawesi-selatan": "Sulawesi Selatan",
       "sulawesi-utara": "Sulawesi Utara",
       "sumatera-barat": "Sumatera Barat",
       "sumatera-selatan": "Sumatera Selatan",
       "sumatera-utara": "Sumatera Utara",
-      "yogyakarta": "Yogyakarta",
+      yogyakarta: "Yogyakarta",
     };
     return branches[branchValue] || branchValue;
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800 border-green-200';
-      case 'inactive': return 'bg-gray-100 text-gray-800 border-gray-200';
-      case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-gray-100 text-gray-800';
+      case "active":
+        return "bg-green-100 text-green-800 border-green-200";
+      case "inactive":
+        return "bg-gray-100 text-gray-800 border-gray-200";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getInitials = (name: string) => {
     return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
       .toUpperCase()
       .slice(0, 2);
   };
@@ -98,7 +111,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
       <DialogContent className="sm:max-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <UserCheck className="h-5 w-5 text-blue-600" />
+            <UserCheck className="h-5 w-5 text-primary" />
             Profil Lengkap Anggota
           </DialogTitle>
         </DialogHeader>
@@ -113,18 +126,26 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                   {getInitials(member.name)}
                 </AvatarFallback>
               </Avatar>
-              
+
               <div className="flex-1">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-gray-900">{member.name}</h2>
+                      <h2 className="text-2xl font-bold text-gray-900">
+                        {member.name}
+                      </h2>
                       <Badge className={`${getStatusColor(member.status)}`}>
-                        {member.status === 'active' ? 'Aktif' : member.status === 'inactive' ? 'Nonaktif' : 'Dalam Proses'}
+                        {member.status === "active"
+                          ? "Aktif"
+                          : member.status === "inactive"
+                            ? "Nonaktif"
+                            : "Dalam Proses"}
                       </Badge>
                     </div>
-                    <p className="text-lg text-blue-700 font-medium">{member.specialization}</p>
-                    
+                    <p className="text-lg text-primary font-medium">
+                      {member.specialization}
+                    </p>
+
                     <div className="flex flex-wrap gap-3 mt-4">
                       <div className="flex items-center gap-2 text-sm">
                         <UserCheck className="h-4 w-4 text-gray-500" />
@@ -136,13 +157,16 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex flex-col gap-2">
                     <Button variant="outline" size="sm" className="gap-2">
                       <FileText className="h-4 w-4" />
                       Download CV
                     </Button>
-                    <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700">
+                    <Button
+                      size="sm"
+                      className="gap-2 bg-primary hover:bg-primary"
+                    >
                       <Phone className="h-4 w-4" />
                       Hubungi
                     </Button>
@@ -187,7 +211,10 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                   <Mail className="h-5 w-5 text-gray-400" />
                   <div>
                     <p className="font-medium text-gray-900">Email</p>
-                    <a href={`mailto:${member.email}`} className="text-blue-600 hover:underline">
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="text-primary hover:underline"
+                    >
                       {member.email}
                     </a>
                   </div>
@@ -197,7 +224,10 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                     <Phone className="h-5 w-5 text-gray-400" />
                     <div>
                       <p className="font-medium text-gray-900">Telepon</p>
-                      <a href={`tel:${member.phone}`} className="text-blue-600 hover:underline">
+                      <a
+                        href={`tel:${member.phone}`}
+                        className="text-primary hover:underline"
+                      >
                         {member.phone}
                       </a>
                     </div>
@@ -212,7 +242,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
             <h3 className="font-bold text-gray-900 flex items-center gap-2">
               Informasi Profesional
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {member.strNumber && (
                 <div className="space-y-2">
@@ -223,7 +253,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                   <p className="font-medium">{member.strNumber}</p>
                 </div>
               )}
-              
+
               {member.sipNumber && (
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -233,7 +263,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                   <p className="font-medium">{member.sipNumber}</p>
                 </div>
               )}
-              
+
               {member.membershipType && (
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -255,7 +285,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                 <ul className="space-y-2">
                   {member.education.map((edu, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
                       <span className="text-gray-700">{edu}</span>
                     </li>
                   ))}
@@ -264,31 +294,38 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
             )}
 
             {/* Clinical Interests */}
-            {member.clinicalInterests && member.clinicalInterests.length > 0 && (
-              <div className="space-y-3">
-                <h4 className="font-medium text-gray-900">Minat Klinis</h4>
-                <div className="flex flex-wrap gap-2">
-                  {member.clinicalInterests.map((interest, index) => (
-                    <Badge key={index} variant="secondary" className="bg-blue-50 text-blue-700">
-                      {interest}
-                    </Badge>
-                  ))}
+            {member.clinicalInterests &&
+              member.clinicalInterests.length > 0 && (
+                <div className="space-y-3">
+                  <h4 className="font-medium text-gray-900">Minat Klinis</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {member.clinicalInterests.map((interest, index) => (
+                      <Badge
+                        key={index}
+                        variant="secondary"
+                        className="bg-blue-50 text-primary"
+                      >
+                        {interest}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
 
           {/* Social Media */}
           {member.socialMedia && (
             <div className="space-y-4 pt-4 border-t">
-              <h3 className="font-medium text-gray-900">Media Sosial Profesional</h3>
+              <h3 className="font-medium text-gray-900">
+                Media Sosial Profesional
+              </h3>
               <div className="flex gap-4">
                 {member.socialMedia.linkedin && (
                   <a
                     href={member.socialMedia.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-800"
+                    className="flex items-center gap-2 text-primary hover:text-blue-800"
                   >
                     <div className="p-2 bg-blue-50 rounded-lg">
                       <span className="font-bold">in</span>
@@ -301,7 +338,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
                     href={member.socialMedia.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-400 hover:text-blue-600"
+                    className="flex items-center gap-2 text-primary hover:text-primary"
                   >
                     <div className="p-2 bg-blue-50 rounded-lg">
                       <span className="font-bold">𝕏</span>
@@ -331,7 +368,7 @@ export default function ProfileModal({ isOpen, onClose, member }: ProfileModalPr
           <Button variant="outline" onClick={onClose} className="flex-1">
             Tutup
           </Button>
-          <Button className="flex-1 bg-blue-600 hover:bg-blue-700 gap-2">
+          <Button className="flex-1 bg-primary hover:bg-primary gap-2">
             <Phone className="h-4 w-4" />
             Hubungi Sekarang
           </Button>

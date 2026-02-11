@@ -1,5 +1,12 @@
 // components/superadmin/BranchOverview.tsx
-import { Building2, Users, CreditCard, MapPin, TrendingUp, TrendingDown } from "lucide-react";
+import {
+  Building2,
+  Users,
+  CreditCard,
+  MapPin,
+  TrendingUp,
+  TrendingDown,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Branch {
@@ -15,16 +22,25 @@ interface BranchOverviewProps {
   branches: Branch[];
 }
 
-export default function BranchOverview({ selectedBranch, branches }: BranchOverviewProps) {
+export default function BranchOverview({
+  selectedBranch,
+  branches,
+}: BranchOverviewProps) {
   const getBranchData = () => {
     if (selectedBranch === "all") {
       return {
-        totalMembers: branches.filter(b => b.id !== "all").reduce((sum, b) => sum + b.memberCount, 0),
-        activeMembers: branches.filter(b => b.id !== "all").reduce((sum, b) => sum + b.activeMembers, 0),
-        pendingPayments: branches.filter(b => b.id !== "all").reduce((sum, b) => sum + b.pendingPayments, 0),
+        totalMembers: branches
+          .filter((b) => b.id !== "all")
+          .reduce((sum, b) => sum + b.memberCount, 0),
+        activeMembers: branches
+          .filter((b) => b.id !== "all")
+          .reduce((sum, b) => sum + b.activeMembers, 0),
+        pendingPayments: branches
+          .filter((b) => b.id !== "all")
+          .reduce((sum, b) => sum + b.pendingPayments, 0),
       };
     }
-    const branch = branches.find(b => b.id === selectedBranch);
+    const branch = branches.find((b) => b.id === selectedBranch);
     return {
       totalMembers: branch?.memberCount || 0,
       activeMembers: branch?.activeMembers || 0,
@@ -41,11 +57,13 @@ export default function BranchOverview({ selectedBranch, branches }: BranchOverv
         <div className="bg-blue-50 p-6 rounded-xl">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2 bg-blue-100 rounded-lg">
-              <Users className="h-5 w-5 text-blue-600" />
+              <Users className="h-5 w-5 text-primary" />
             </div>
             <div>
               <p className="text-sm text-gray-600">Total Anggota</p>
-              <p className="text-2xl font-bold text-blue-700">{data.totalMembers.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-primary">
+                {data.totalMembers.toLocaleString()}
+              </p>
             </div>
           </div>
           <div className="flex items-center text-sm text-green-600">
@@ -61,7 +79,9 @@ export default function BranchOverview({ selectedBranch, branches }: BranchOverv
             </div>
             <div>
               <p className="text-sm text-gray-600">Anggota Aktif</p>
-              <p className="text-2xl font-bold text-green-700">{data.activeMembers.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-green-700">
+                {data.activeMembers.toLocaleString()}
+              </p>
             </div>
           </div>
           <div className="flex items-center text-sm text-green-600">
@@ -77,7 +97,9 @@ export default function BranchOverview({ selectedBranch, branches }: BranchOverv
             </div>
             <div>
               <p className="text-sm text-gray-600">Pembayaran Tertunda</p>
-              <p className="text-2xl font-bold text-amber-700">{data.pendingPayments}</p>
+              <p className="text-2xl font-bold text-amber-700">
+                {data.pendingPayments}
+              </p>
             </div>
           </div>
           <div className="flex items-center text-sm text-red-600">
@@ -99,24 +121,31 @@ export default function BranchOverview({ selectedBranch, branches }: BranchOverv
               <div className="col-span-2">Aksi</div>
             </div>
             {branches
-              .filter(b => b.id !== "all")
+              .filter((b) => b.id !== "all")
               .slice(0, 5)
               .map((branch) => (
-                <div key={branch.id} className="grid grid-cols-12 p-4 border-t hover:bg-gray-50">
+                <div
+                  key={branch.id}
+                  className="grid grid-cols-12 p-4 border-t hover:bg-gray-50"
+                >
                   <div className="col-span-6 flex items-center gap-3">
                     <div className="p-2 bg-blue-100 rounded-lg">
-                      <MapPin className="h-4 w-4 text-blue-600" />
+                      <MapPin className="h-4 w-4 text-primary" />
                     </div>
                     <div>
                       <p className="font-medium">{branch.name}</p>
-                      <p className="text-sm text-gray-500">ID: {branch.id.toUpperCase()}</p>
+                      <p className="text-sm text-gray-500">
+                        ID: {branch.id.toUpperCase()}
+                      </p>
                     </div>
                   </div>
                   <div className="col-span-2 flex items-center">
                     <span className="font-medium">{branch.memberCount}</span>
                   </div>
                   <div className="col-span-2 flex items-center">
-                    <span className="font-medium text-green-600">{branch.activeMembers}</span>
+                    <span className="font-medium text-green-600">
+                      {branch.activeMembers}
+                    </span>
                   </div>
                   <div className="col-span-2 flex items-center">
                     <Button size="sm" variant="outline">

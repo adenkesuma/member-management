@@ -28,28 +28,142 @@ import {
   Shield,
   Globe,
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // Data cabang PDSKKI
 const branches = [
-  { id: "all", name: "Semua Cabang", memberCount: 1250, activeMembers: 980, pendingPayments: 45 },
-  { id: "dki-jakarta", name: "DKI Jakarta", memberCount: 250, activeMembers: 210, pendingPayments: 12 },
-  { id: "jawa-barat", name: "Jawa Barat", memberCount: 180, activeMembers: 150, pendingPayments: 8 },
-  { id: "jawa-tengah", name: "Jawa Tengah", memberCount: 160, activeMembers: 135, pendingPayments: 6 },
-  { id: "jawa-timur", name: "Jawa Timur", memberCount: 170, activeMembers: 145, pendingPayments: 7 },
-  { id: "bali", name: "Bali", memberCount: 90, activeMembers: 75, pendingPayments: 4 },
-  { id: "sumatera-utara", name: "Sumatera Utara", memberCount: 120, activeMembers: 95, pendingPayments: 5 },
-  { id: "sumatera-barat", name: "Sumatera Barat", memberCount: 85, activeMembers: 70, pendingPayments: 3 },
-  { id: "sulawesi-selatan", name: "Sulawesi Selatan", memberCount: 95, activeMembers: 80, pendingPayments: 4 },
-  { id: "yogyakarta", name: "Yogyakarta", memberCount: 75, activeMembers: 65, pendingPayments: 2 },
-  { id: "banten", name: "Banten", memberCount: 110, activeMembers: 90, pendingPayments: 5 },
-  { id: "riau", name: "Riau", memberCount: 70, activeMembers: 60, pendingPayments: 3 },
-  { id: "kepulauan-riau", name: "Kepulauan Riau", memberCount: 45, activeMembers: 40, pendingPayments: 2 },
-  { id: "lampung", name: "Lampung", memberCount: 65, activeMembers: 55, pendingPayments: 3 },
-  { id: "sumatera-selatan", name: "Sumatera Selatan", memberCount: 60, activeMembers: 50, pendingPayments: 2 },
-  { id: "jambi", name: "Jambi", memberCount: 50, activeMembers: 45, pendingPayments: 2 },
-  { id: "aceh", name: "Aceh", memberCount: 40, activeMembers: 35, pendingPayments: 1 },
-  { id: "sulawesi-utara", name: "Sulawesi Utara", memberCount: 55, activeMembers: 45, pendingPayments: 2 },
+  {
+    id: "all",
+    name: "Semua Cabang",
+    memberCount: 1250,
+    activeMembers: 980,
+    pendingPayments: 45,
+  },
+  {
+    id: "dki-jakarta",
+    name: "DKI Jakarta",
+    memberCount: 250,
+    activeMembers: 210,
+    pendingPayments: 12,
+  },
+  {
+    id: "jawa-barat",
+    name: "Jawa Barat",
+    memberCount: 180,
+    activeMembers: 150,
+    pendingPayments: 8,
+  },
+  {
+    id: "jawa-tengah",
+    name: "Jawa Tengah",
+    memberCount: 160,
+    activeMembers: 135,
+    pendingPayments: 6,
+  },
+  {
+    id: "jawa-timur",
+    name: "Jawa Timur",
+    memberCount: 170,
+    activeMembers: 145,
+    pendingPayments: 7,
+  },
+  {
+    id: "bali",
+    name: "Bali",
+    memberCount: 90,
+    activeMembers: 75,
+    pendingPayments: 4,
+  },
+  {
+    id: "sumatera-utara",
+    name: "Sumatera Utara",
+    memberCount: 120,
+    activeMembers: 95,
+    pendingPayments: 5,
+  },
+  {
+    id: "sumatera-barat",
+    name: "Sumatera Barat",
+    memberCount: 85,
+    activeMembers: 70,
+    pendingPayments: 3,
+  },
+  {
+    id: "sulawesi-selatan",
+    name: "Sulawesi Selatan",
+    memberCount: 95,
+    activeMembers: 80,
+    pendingPayments: 4,
+  },
+  {
+    id: "yogyakarta",
+    name: "Yogyakarta",
+    memberCount: 75,
+    activeMembers: 65,
+    pendingPayments: 2,
+  },
+  {
+    id: "banten",
+    name: "Banten",
+    memberCount: 110,
+    activeMembers: 90,
+    pendingPayments: 5,
+  },
+  {
+    id: "riau",
+    name: "Riau",
+    memberCount: 70,
+    activeMembers: 60,
+    pendingPayments: 3,
+  },
+  {
+    id: "kepulauan-riau",
+    name: "Kepulauan Riau",
+    memberCount: 45,
+    activeMembers: 40,
+    pendingPayments: 2,
+  },
+  {
+    id: "lampung",
+    name: "Lampung",
+    memberCount: 65,
+    activeMembers: 55,
+    pendingPayments: 3,
+  },
+  {
+    id: "sumatera-selatan",
+    name: "Sumatera Selatan",
+    memberCount: 60,
+    activeMembers: 50,
+    pendingPayments: 2,
+  },
+  {
+    id: "jambi",
+    name: "Jambi",
+    memberCount: 50,
+    activeMembers: 45,
+    pendingPayments: 2,
+  },
+  {
+    id: "aceh",
+    name: "Aceh",
+    memberCount: 40,
+    activeMembers: 35,
+    pendingPayments: 1,
+  },
+  {
+    id: "sulawesi-utara",
+    name: "Sulawesi Utara",
+    memberCount: 55,
+    activeMembers: 45,
+    pendingPayments: 2,
+  },
 ];
 
 export default function SuperAdminDashboard() {
@@ -78,13 +192,15 @@ export default function SuperAdminDashboard() {
         setLoading(false);
       }, 500);
     };
-    
+
     simulateAuth();
   }, [isClient, pathname]); // Tambahkan dependency
 
   const handleExportData = () => {
     // Logic untuk export data
-    alert(`Export data untuk ${selectedBranch === "all" ? "semua cabang" : branches.find(b => b.id === selectedBranch)?.name}`);
+    alert(
+      `Export data untuk ${selectedBranch === "all" ? "semua cabang" : branches.find((b) => b.id === selectedBranch)?.name}`,
+    );
   };
 
   const handleRefresh = () => {
@@ -95,7 +211,7 @@ export default function SuperAdminDashboard() {
     }, 1000);
   };
 
-  const currentBranch = branches.find(b => b.id === selectedBranch);
+  const currentBranch = branches.find((b) => b.id === selectedBranch);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -104,31 +220,35 @@ export default function SuperAdminDashboard() {
         <div className="px-6 py-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className={`p-2 rounded-lg ${userRole === "main" ? "bg-purple-100" : "bg-blue-100"}`}>
+              <div
+                className={`p-2 rounded-lg ${userRole === "main" ? "bg-purple-100" : "bg-blue-100"}`}
+              >
                 {userRole === "main" ? (
-                  <Shield className="h-6 w-6 text-blue-600" />
+                  <Shield className="h-6 w-6 text-primary" />
                 ) : (
-                  <Building2 className="h-6 w-6 text-blue-600" />
+                  <Building2 className="h-6 w-6 text-primary" />
                 )}
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">
-                  {userRole === "main" ? "Superadmin Pusat" : "Superadmin Cabang"}
+                  {userRole === "main"
+                    ? "Superadmin Pusat"
+                    : "Superadmin Cabang"}
                 </h1>
                 <p className="text-gray-600 text-xs">
-                  {userRole === "main" 
-                    ? "Dashboard Pengelolaan Nasional PDSKKI" 
+                  {userRole === "main"
+                    ? "Dashboard Pengelolaan Nasional PDSKKI"
                     : `Dashboard Pengelolaan ${currentBranch?.name}`}
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
               {/* <Button variant="outline" size="sm" className="gap-2">
                 <Bell className="h-4 w-4" />
                 <span className="hidden md:inline">Notifikasi</span>
               </Button> */}
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
                 SA
               </div>
             </div>
@@ -138,7 +258,10 @@ export default function SuperAdminDashboard() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 pt-4 border-t">
             <div className="flex items-center gap-4">
               <div className="w-64">
-                <Select value={selectedBranch} onValueChange={setSelectedBranch}>
+                <Select
+                  value={selectedBranch}
+                  onValueChange={setSelectedBranch}
+                >
                   <SelectTrigger className="w-full">
                     <div className="flex items-center gap-2">
                       <Building2 className="h-4 w-4 text-gray-500" />
@@ -151,7 +274,9 @@ export default function SuperAdminDashboard() {
                         <div className="flex items-center justify-between">
                           <span>{branch.name}</span>
                           {branch.id !== "all" && (
-                            <span className="text-xs text-gray-500">{branch.memberCount} anggota</span>
+                            <span className="text-xs text-gray-500">
+                              {branch.memberCount} anggota
+                            </span>
                           )}
                         </div>
                       </SelectItem>
@@ -159,19 +284,21 @@ export default function SuperAdminDashboard() {
                   </SelectContent>
                 </Select>
               </div>
-              
+
               {userRole === "main" && selectedBranch !== "all" && (
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => router.push(`/superadmin/branch/${selectedBranch}`)}
+                  onClick={() =>
+                    router.push(`/superadmin/branch/${selectedBranch}`)
+                  }
                 >
                   <Globe className="h-4 w-4 mr-2" />
                   Masuk ke Dashboard Cabang
                 </Button>
               )}
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -180,10 +307,16 @@ export default function SuperAdminDashboard() {
                 className="gap-2"
                 disabled={loading}
               >
-                <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+                <RefreshCw
+                  className={`h-4 w-4 ${loading ? "animate-spin" : ""}`}
+                />
                 Refresh
               </Button>
-              <Button size="sm" onClick={handleExportData} className="bg-blue-600 gap-2">
+              <Button
+                size="sm"
+                onClick={handleExportData}
+                className="bg-primary gap-2"
+              >
                 <Download className="h-4 w-4" />
                 Export Data
               </Button>
@@ -195,8 +328,8 @@ export default function SuperAdminDashboard() {
       <main className="p-6">
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Stats Overview */}
-          <StatsCards 
-            selectedBranch={selectedBranch} 
+          <StatsCards
+            selectedBranch={selectedBranch}
             branchData={currentBranch}
             userRole={userRole}
           />
@@ -207,13 +340,15 @@ export default function SuperAdminDashboard() {
             <div className="lg:col-span-2 space-y-6">
               {/* Branch Overview */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Gambaran Cabang</CardTitle>
+                      <CardTitle className="text-white">
+                        Gambaran Cabang
+                      </CardTitle>
                       <CardDescription className="text-white mt-1">
-                        {selectedBranch === "all" 
-                          ? "Overview semua cabang PDSKKI" 
+                        {selectedBranch === "all"
+                          ? "Overview semua cabang PDSKKI"
                           : `Detail cabang ${currentBranch?.name}`}
                       </CardDescription>
                     </div>
@@ -224,8 +359,8 @@ export default function SuperAdminDashboard() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
-                  <BranchOverview 
-                    selectedBranch={selectedBranch} 
+                  <BranchOverview
+                    selectedBranch={selectedBranch}
                     branches={branches}
                   />
                 </CardContent>
@@ -233,10 +368,12 @@ export default function SuperAdminDashboard() {
 
               {/* Payment Management */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Manajemen Pembayaran</CardTitle>
+                      <CardTitle className="text-white">
+                        Manajemen Pembayaran
+                      </CardTitle>
                       <CardDescription className="mt-1 text-white">
                         Kelola iuran dan pembayaran anggota
                       </CardDescription>
@@ -254,10 +391,12 @@ export default function SuperAdminDashboard() {
 
               {/* Member Management */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="p-6 bg-blue-600 rounded-t-2xl">
+                <CardHeader className="p-6 bg-primary rounded-t-2xl">
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Manajemen Anggota</CardTitle>
+                      <CardTitle className="text-white">
+                        Manajemen Anggota
+                      </CardTitle>
                       <CardDescription className="text-white mt-1">
                         Kelola data dan status keanggotaan
                       </CardDescription>
@@ -278,9 +417,13 @@ export default function SuperAdminDashboard() {
             <div className="space-y-6">
               {/* Recent Activities */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
-                  <CardTitle className="text-white">Aktivitas Terbaru</CardTitle>
-                  <CardDescription className="mt-1 text-white">Aktivitas sistem 24 jam terakhir</CardDescription>
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
+                  <CardTitle className="text-white">
+                    Aktivitas Terbaru
+                  </CardTitle>
+                  <CardDescription className="mt-1 text-white">
+                    Aktivitas sistem 24 jam terakhir
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
                   <RecentActivities />
@@ -290,21 +433,30 @@ export default function SuperAdminDashboard() {
               {/* Branch Summary (for main admin) */}
               {userRole === "main" && (
                 <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                  <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
-                    <CardTitle className="text-white">Ringkasan Cabang</CardTitle>
-                    <CardDescription className="text-white">3 cabang dengan anggota terbanyak</CardDescription>
+                  <CardHeader className="bg-primary p-6 rounded-t-2xl">
+                    <CardTitle className="text-white">
+                      Ringkasan Cabang
+                    </CardTitle>
+                    <CardDescription className="text-white">
+                      3 cabang dengan anggota terbanyak
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="p-6 pt-0">
                     <div className="space-y-3">
                       {branches
-                        .filter(b => b.id !== "all")
+                        .filter((b) => b.id !== "all")
                         .sort((a, b) => b.memberCount - a.memberCount)
                         .slice(0, 3)
                         .map((branch) => (
-                          <div key={branch.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
+                          <div
+                            key={branch.id}
+                            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg"
+                          >
                             <div>
                               <p className="font-medium">{branch.name}</p>
-                              <p className="text-sm text-gray-500">{branch.activeMembers} anggota aktif</p>
+                              <p className="text-sm text-gray-500">
+                                {branch.activeMembers} anggota aktif
+                              </p>
                             </div>
                             <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">
                               {branch.memberCount}
@@ -318,35 +470,55 @@ export default function SuperAdminDashboard() {
 
               {/* Quick Actions */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className="bg-blue-600 p-6 rounded-t-2xl">
+                <CardHeader className="bg-primary p-6 rounded-t-2xl">
                   <CardTitle className="text-white">Quick Actions</CardTitle>
-                  <CardDescription className="text-white">Aksi cepat untuk superadmin</CardDescription>
+                  <CardDescription className="text-white">
+                    Aksi cepat untuk superadmin
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3 p-6 pt-0">
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Users className="h-4 w-4" />
                     Approve Anggota Baru
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <CreditCard className="h-4 w-4" />
                     Verifikasi Pembayaran
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Building2 className="h-4 w-4" />
                     Kelola Cabang
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <BarChart3 className="h-4 w-4" />
                     Generate Report
                   </Button>
-                  <Button variant="outline" className="w-full justify-start gap-2" size="sm">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    size="sm"
+                  >
                     <Download className="h-4 w-4" />
                     Export Data
                   </Button>
                 </CardContent>
               </Card>
-
-              
             </div>
           </div>
         </div>

@@ -19,7 +19,9 @@ export default function PaymentSummary() {
     <div className="space-y-6">
       {/* Ringkasan per Tahun */}
       <div>
-        <h3 className="font-medium text-gray-700 mb-3">Riwayat Iuran Tahunan</h3>
+        <h3 className="font-medium text-gray-700 mb-3">
+          Riwayat Iuran Tahunan
+        </h3>
         <div className="space-y-3">
           {yearlyPayments.map((item) => (
             <div key={item.year} className="flex items-center justify-between">
@@ -28,7 +30,9 @@ export default function PaymentSummary() {
                 <span className="font-medium">{item.year}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="font-semibold">Rp {item.amount.toLocaleString()}</span>
+                <span className="font-semibold">
+                  Rp {item.amount.toLocaleString()}
+                </span>
                 <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
                   LUNAS
                 </span>
@@ -40,17 +44,21 @@ export default function PaymentSummary() {
 
       {/* Metode Pembayaran */}
       <div>
-        <h3 className="font-medium text-gray-700 mb-3">Metode Pembayaran Favorit</h3>
+        <h3 className="font-medium text-gray-700 mb-3">
+          Metode Pembayaran Favorit
+        </h3>
         <div className="space-y-3">
           {paymentMethods.map((method) => (
             <div key={method.method} className="space-y-2">
               <div className="flex justify-between">
                 <span className="text-sm">{method.method}</span>
-                <span className="text-sm font-medium">{method.count} transaksi</span>
+                <span className="text-sm font-medium">
+                  {method.count} transaksi
+                </span>
               </div>
               <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-blue-600 rounded-full" 
+                <div
+                  className="h-full bg-primary rounded-full"
                   style={{ width: `${method.percentage}%` }}
                 ></div>
               </div>
@@ -68,7 +76,7 @@ export default function PaymentSummary() {
           </div>
           <div className="text-right">
             <p className="text-sm text-gray-600">Rata-rata per Tahun</p>
-            <p className="text-lg font-semibold text-blue-600">Rp 2.340.000</p>
+            <p className="text-lg font-semibold text-primary">Rp 2.340.000</p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // app/dashboard/page.tsx
-"use client"
+"use client";
 
 import PaymentHistory from "@/components/dashboard/PaymentHistory";
 import PaymentSummary from "@/components/dashboard/PaymentSummary";
@@ -7,8 +7,21 @@ import UpcomingPayments from "@/components/dashboard/UpcomingPayments";
 import MembershipStatus from "@/components/dashboard/MembershipStatus";
 import QuickPaymentActions from "@/components/dashboard/QuickPaymentActions";
 import RecentTransactions from "@/components/dashboard/RecentTransactions";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Check, ChevronDown, ChevronUp, CreditCard, Download } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Calendar,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  CreditCard,
+  Download,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
@@ -23,9 +36,9 @@ export default function DashboardPage() {
   });
 
   const toggleCard = (cardName: keyof typeof expandedCards) => {
-    setExpandedCards(prev => ({
+    setExpandedCards((prev) => ({
       ...prev,
-      [cardName]: !prev[cardName]
+      [cardName]: !prev[cardName],
     }));
   };
 
@@ -36,17 +49,25 @@ export default function DashboardPage() {
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard Pembayaran Member</h1>
-              <p className="text-gray-600 text-sm">Selamat datang kembali, Dr. John Doe!</p>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Dashboard Pembayaran Member
+              </h1>
+              <p className="text-gray-600 text-sm">
+                Selamat datang kembali, Dr. John Doe!
+              </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right hidden md:block">
                 <p className="font-medium">NPA: PDSKKI-2024-001</p>
                 <p className="text-sm text-gray-500">
-                  Status: <span className="text-green-600 font-semibold">Aktif</span>
+                  Status:{" "}
+                  <span className="text-green-600 font-semibold">Aktif</span>
                 </p>
               </div>
-              <Link href={"/profile"} className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              <Link
+                href={"/profile"}
+                className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold"
+              >
                 JD
               </Link>
             </div>
@@ -62,8 +83,12 @@ export default function DashboardPage() {
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-500">Total Iuran Tahun Ini</p>
-                    <p className="text-2xl font-bold text-gray-900">Rp 2.500.000</p>
+                    <p className="text-sm text-gray-500">
+                      Total Iuran Tahun Ini
+                    </p>
+                    <p className="text-2xl font-bold text-gray-900">
+                      Rp 2.500.000
+                    </p>
                   </div>
                   <div className="p-3 bg-green-100 rounded-xl">
                     <CreditCard className="h-6 w-6 text-green-600" />
@@ -85,13 +110,15 @@ export default function DashboardPage() {
                     <p className="text-2xl font-bold text-gray-900">354 Hari</p>
                   </div>
                   <div className="p-3 bg-blue-100 rounded-xl">
-                    <div className="h-6 w-6 text-blue-600 font-bold text-center">
+                    <div className="h-6 w-6 text-primary font-bold text-center">
                       <Calendar />
                     </div>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-sm text-gray-600">Berlaku hingga: 31 Des 2025</p>
+                  <p className="text-sm text-gray-600">
+                    Berlaku hingga: 31 Des 2025
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -129,7 +156,10 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <Button variant="link" className="p-0 h-auto text-blue-600 text-sm">
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-primary text-sm"
+                  >
                     Lihat semua transaksi →
                   </Button>
                 </div>
@@ -142,11 +172,17 @@ export default function DashboardPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Riwayat Pembayaran Detail */}
               <Card className="rounded-2xl shadow-sm border p-0 border-gray-200">
-                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.paymentHistory ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`p-6 bg-primary ${expandedCards.paymentHistory ? "rounded-t-2xl" : "rounded-2xl"}`}
+                >
                   <div className="flex justify-between items-center">
                     <div>
-                      <CardTitle className="text-white">Riwayat Pembayaran Detail</CardTitle>
-                      <CardDescription className="text-white mt-1">Detail lengkap semua transaksi pembayaran iuran</CardDescription>
+                      <CardTitle className="text-white">
+                        Riwayat Pembayaran Detail
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Detail lengkap semua transaksi pembayaran iuran
+                      </CardDescription>
                     </div>
                     <div className="flex items-center gap-4">
                       <Button variant="outline" size="sm" className="gap-2">
@@ -177,11 +213,17 @@ export default function DashboardPage() {
 
               {/* Ringkasan Pembayaran */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.paymentSummary ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`p-6 bg-primary ${expandedCards.paymentSummary ? "rounded-t-2xl" : "rounded-2xl"}`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Ringkasan Pembayaran</CardTitle>
-                      <CardDescription className="text-white mt-1">Analisis pembayaran berdasarkan periode</CardDescription>
+                      <CardTitle className="text-white">
+                        Ringkasan Pembayaran
+                      </CardTitle>
+                      <CardDescription className="text-white mt-1">
+                        Analisis pembayaran berdasarkan periode
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
@@ -206,11 +248,17 @@ export default function DashboardPage() {
 
               {/* Transaksi Terbaru */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.recentTransactions ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`p-6 bg-primary ${expandedCards.recentTransactions ? "rounded-t-2xl" : "rounded-2xl"}`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Transaksi Terbaru</CardTitle>
-                      <CardDescription className="mt-1 text-white">5 transaksi pembayaran terakhir</CardDescription>
+                      <CardTitle className="text-white">
+                        Transaksi Terbaru
+                      </CardTitle>
+                      <CardDescription className="mt-1 text-white">
+                        5 transaksi pembayaran terakhir
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
@@ -238,11 +286,17 @@ export default function DashboardPage() {
             <div className="space-y-6">
               {/* Status Keanggotaan */}
               <Card className="rounded-2xl shadow-sm p-0 border border-gray-200">
-                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.membershipStatus ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`p-6 bg-primary ${expandedCards.membershipStatus ? "rounded-t-2xl" : "rounded-2xl"}`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Status Keanggotaan</CardTitle>
-                      <CardDescription className="mt-1 text-white">Informasi status keanggotaan Anda</CardDescription>
+                      <CardTitle className="text-white">
+                        Status Keanggotaan
+                      </CardTitle>
+                      <CardDescription className="mt-1 text-white">
+                        Informasi status keanggotaan Anda
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
@@ -267,11 +321,17 @@ export default function DashboardPage() {
 
               {/* Pembayaran Mendatang */}
               <Card className="rounded-2xl p-0 shadow-sm border border-gray-200">
-                <CardHeader className={`p-6 bg-blue-600 ${expandedCards.upcomingPayments ? 'rounded-t-2xl' : 'rounded-2xl'}`}>
+                <CardHeader
+                  className={`p-6 bg-primary ${expandedCards.upcomingPayments ? "rounded-t-2xl" : "rounded-2xl"}`}
+                >
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">Pembayaran Mendatang</CardTitle>
-                      <CardDescription className="text-white">Jadwal pembayaran yang akan datang</CardDescription>
+                      <CardTitle className="text-white">
+                        Pembayaran Mendatang
+                      </CardTitle>
+                      <CardDescription className="text-white">
+                        Jadwal pembayaran yang akan datang
+                      </CardDescription>
                     </div>
                     <Button
                       variant="ghost"
@@ -333,7 +393,9 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Iuran Tahunan:</span>
-                    <span className="font-medium text-blue-600">Rp 2.500.000</span>
+                    <span className="font-medium text-primary">
+                      Rp 2.500.000
+                    </span>
                   </div>
                   <div className="pt-4 border-t">
                     <div className="flex justify-between items-center">
