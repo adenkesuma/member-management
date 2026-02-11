@@ -1,4 +1,3 @@
-// app/superadmin/branches/[branchId]/page.tsx - SOLUSI FIX
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,6 +7,7 @@ import BranchMembers from "@/components/superadmin/branch/BranchMembers";
 import BranchPayments from "@/components/superadmin/branch/BranchPayments";
 import BranchActivities from "@/components/superadmin/branch/BranchActivities";
 import { Button } from "@/components/ui/button";
+import PDSKKILogo from "@/public/pdskki.png";
 import {
   Select,
   SelectContent,
@@ -38,6 +38,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 // Data cabang PDSKKI
 const branchesData = {
@@ -203,12 +204,10 @@ export default function BranchDashboardPage() {
   const params = useParams();
   const router = useRouter();
 
-  // HANYA gunakan state untuk data yang benar-benar perlu diupdate setelah mount
   const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Gunakan useMemo untuk mendapatkan branch data secara synchronous
   const branchId = params.branchId;
   const idBranch = Array.isArray(branchId) ? branchId[0] : branchId || "";
   console.log(typeof branchId);
@@ -217,7 +216,6 @@ export default function BranchDashboardPage() {
     ? (branchesData as Record<string, BranchData>)[idBranch]
     : undefined;
 
-  // Simulasi loading data - hanya di client side
   useEffect(() => {
     if (typeof window !== "undefined") {
       const timer = setTimeout(() => {
@@ -227,14 +225,12 @@ export default function BranchDashboardPage() {
     }
   }, []);
 
-  // Redirect jika cabang tidak ditemukan - hanya di client side
   useEffect(() => {
     if (typeof window !== "undefined" && !isLoading && (!branchId || !branch)) {
       router.push("/superadmin/dashboard");
     }
   }, [branchId, branch, isLoading, router]);
 
-  // Jika tidak ada branchId atau branch tidak ditemukan setelah loading
   if (!branchId || !branch) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -266,43 +262,25 @@ export default function BranchDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
       <header className="bg-white border-b">
-        <div className="px-6 py-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="px-6 py-4 bg-primary flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              {/* <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => router.push("/superadmin/dashboard")}
-                className="h-10 w-10"
-              >
-                <ArrowLeft className="size-8" />
-              </Button> */}
-
-              <div className={`p-2 rounded-lg bg-blue-100`}>
-                <Building2 className="h-6 w-6 text-primary" />
-              </div>
-
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
-                  Superadmin Cabang {branch.name}
-                </h1>
-                <p className="text-gray-600 text-xs">
-                  Dashboard Pengelolaan Anggota Cabang {branch.name}
-                </p>
-              </div>
+              <Image src={PDSKKILogo} alt="pdskki logo" className="w-16" />
+              <span className="text-white text-2xl font-semibold">
+                Cabang {branch.name}
+              </span>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">
                 {branch.name.charAt(0)}
               </div>
             </div>
           </div>
 
           {/* Branch Info & Actions */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 pt-4 border-t">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-t">
             <div className="flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-50 rounded-lg">

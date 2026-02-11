@@ -9,6 +9,7 @@ import MemberManagement from "@/components/superadmin/MemberManagement";
 import RecentActivities from "@/components/superadmin/RecentActivities";
 import StatsCards from "@/components/superadmin/StatsCards";
 import { Button } from "@/components/ui/button";
+import PDSKKILogo from "@/public/pdskki.png";
 import {
   Select,
   SelectContent,
@@ -35,6 +36,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 // Data cabang PDSKKI
 const branches = [
@@ -217,45 +219,28 @@ export default function SuperAdminDashboard() {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="px-6 py-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="">
+          <div className="flex px-6 py-4 flex-col bg-primary md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div
-                className={`p-2 rounded-lg ${userRole === "main" ? "bg-purple-100" : "bg-blue-100"}`}
-              >
-                {userRole === "main" ? (
-                  <Shield className="h-6 w-6 text-primary" />
-                ) : (
-                  <Building2 className="h-6 w-6 text-primary" />
-                )}
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
-                  {userRole === "main"
-                    ? "Superadmin Pusat"
-                    : "Superadmin Cabang"}
-                </h1>
-                <p className="text-gray-600 text-xs">
-                  {userRole === "main"
-                    ? "Dashboard Pengelolaan Nasional PDSKKI"
-                    : `Dashboard Pengelolaan ${currentBranch?.name}`}
-                </p>
-              </div>
+              <Image src={PDSKKILogo} alt="pdskki logo" className="w-16" />
+              <span className="text-white text-2xl font-semibold">
+                Superadmin
+              </span>
             </div>
 
             <div className="flex items-center gap-3">
-              {/* <Button variant="outline" size="sm" className="gap-2">
+              <Button variant="outline" size="sm" className="gap-2">
                 <Bell className="h-4 w-4" />
                 <span className="hidden md:inline">Notifikasi</span>
-              </Button> */}
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+              </Button>
+              <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">
                 SA
               </div>
             </div>
           </div>
 
           {/* Branch Selector & Actions */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 pt-4 border-t">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 py-4 border-t">
             <div className="flex items-center gap-4">
               <div className="w-64">
                 <Select
