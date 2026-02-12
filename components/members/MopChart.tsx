@@ -1,10 +1,16 @@
 // app/members/MapChart.tsx
 "use client";
 
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker,
+} from "react-simple-maps";
 import { Tooltip } from "@/components/ui/tooltip";
 
-const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/indonesia/indonesia-provinces.json";
+const geoUrl =
+  "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/indonesia/indonesia-provinces.json";
 
 interface Branch {
   id: string;
@@ -25,7 +31,7 @@ export default function MapChart({ branches, onBranchClick }: MapChartProps) {
       projection="geoMercator"
       projectionConfig={{
         center: [118, -2],
-        scale: 1200
+        scale: 1200,
       }}
       width={800}
       height={400}
@@ -49,10 +55,10 @@ export default function MapChart({ branches, onBranchClick }: MapChartProps) {
           ))
         }
       </Geographies>
-      
+
       {branches.map((branch) => {
-        const markerSize = Math.min(8 + (branch.members * 2), 20);
-        
+        const markerSize = Math.min(8 + branch.members * 2, 20);
+
         return (
           <Marker
             key={branch.id}
