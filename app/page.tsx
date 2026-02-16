@@ -5,7 +5,7 @@ import MemberCard from "@/components/members/MemberCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PDSKKILogo from "@/public/pdskki.png";
-import MapsImage from "@/public/maps.png";
+import MapsImage from "@/public/map.png";
 import {
   Select,
   SelectContent,
@@ -254,26 +254,28 @@ function IndonesiaMap({
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 mb-10">
+    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-4 mb-10">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
         <div>
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
               <MapPin className="h-5 w-5 text-primary" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              Distribusi Anggota
-            </h2>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">
+                Distribusi Anggota
+              </h2>
+              <p className="text-gray-500 text-xs">
+                Sebaran anggota PDSKKI di seluruh Indonesia
+              </p>
+            </div>
           </div>
-          <p className="text-gray-500 text-sm ml-2">
-            Sebaran anggota PDSKKI di seluruh Indonesia
-          </p>
         </div>
       </div>
 
       {/* Maps Container - Background Image dengan Markers Dinamis */}
-      <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-inner">
+      <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-4 bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-inner">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -283,8 +285,6 @@ function IndonesiaMap({
             className="object-cover"
             priority
           />
-          {/* Soft Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/10" />
         </div>
 
         {/* Grid Pattern untuk efek peta */}
@@ -345,40 +345,14 @@ function IndonesiaMap({
             </div>
           );
         })}
-
-        {/* Legend */}
-        <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-200">
-          <h4 className="text-xs font-semibold text-gray-700 mb-3 flex items-center gap-1.5">
-            <MapPin className="h-3.5 w-3.5 text-primary" />
-            Legenda
-          </h4>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full bg-red-400 border-2 border-white shadow-sm"></div>
-              <span className="text-xs text-gray-600">1-5 Anggota</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-red-500 border-2 border-white shadow-sm"></div>
-              <span className="text-xs text-gray-600">6-10 Anggota</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-red-600 border-2 border-white shadow-sm"></div>
-              <span className="text-xs text-gray-600">11+ Anggota</span>
-            </div>
-            <div className="flex items-center gap-2 mt-1 pt-2 border-t border-gray-200">
-              <div className="w-3 h-3 rounded-full bg-gray-300 border border-white"></div>
-              <span className="text-xs text-gray-600">Belum ada anggota</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Stats Cards - Modern Minimalist */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-        <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="bg-yellow-400 rounded-2xl p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 mb-1">
+              <p className="text-sm font-medium text-black mb-1">
                 Cabang Terbanyak
               </p>
               <h3 className="text-xl font-bold text-gray-900 mb-1">
@@ -397,24 +371,24 @@ function IndonesiaMap({
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-yellow-500/5 to-transparent rounded-2xl p-6 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-300">
+        <div className="bg-primary rounded-2xl p-6 ">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 mb-1">
+              <p className="text-sm font-medium text-white mb-1">
                 Total Cabang
               </p>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
+              <h3 className="text-xl font-bold text-white mb-1">
                 {stats.totalBranches} Cabang
               </h3>
               <div className="flex items-center gap-1">
-                <MapPin className="h-4 w-4 text-yellow-500" />
-                <span className="text-sm font-semibold text-yellow-500">
+                <MapPin className="h-4 w-4 text-yellow-400" />
+                <span className="text-sm font-semibold text-yellow-400">
                   Aktif seluruh Indonesia
                 </span>
               </div>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-yellow-500/20 flex items-center justify-center">
-              <Building2 className="h-6 w-6 text-yellow-500" />
+              <Building2 className="h-6 w-6 text-yellow-400" />
             </div>
           </div>
         </div>
@@ -439,116 +413,6 @@ function IndonesiaMap({
             </div>
             <div className="w-12 h-12 rounded-2xl bg-gray-200/50 flex items-center justify-center">
               <Users className="h-6 w-6 text-gray-500" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Top Branches & Branch List */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Top 5 Branches */}
-        <div className="lg:col-span-1">
-          <div className="bg-gradient-to-br from-primary/5 to-yellow-500/5 rounded-2xl p-6 border border-primary/10 h-full">
-            <div className="flex items-center gap-2 mb-5">
-              <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-              <h3 className="font-semibold text-gray-900">Top 5 Cabang</h3>
-            </div>
-
-            <div className="space-y-4">
-              {topBranches.length > 0 ? (
-                topBranches.map((branch, index) => (
-                  <div
-                    key={branch.id}
-                    className="flex items-center justify-between group cursor-pointer"
-                    onClick={() => onBranchClick?.(branch.id)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold ${
-                          index === 0
-                            ? "bg-yellow-500 text-white"
-                            : index === 1
-                              ? "bg-gray-400 text-white"
-                              : index === 2
-                                ? "bg-amber-600 text-white"
-                                : "bg-gray-200 text-gray-700"
-                        }`}
-                      >
-                        {index + 1}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900 text-sm group-hover:text-primary transition-colors">
-                          {branch.name}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          {branch.members} anggota
-                        </p>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm text-gray-500 text-center py-4">
-                  Belum ada data anggota
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* All Branches Grid */}
-        <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Daftar Cabang</h3>
-              <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                {branchesWithCounts.filter((b) => b.members > 0).length} aktif
-                dari {branchData.length}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {branchesWithCounts.map((branch) => (
-                <div
-                  key={branch.id}
-                  className={`flex items-center gap-2 p-3 rounded-xl transition-all duration-200 cursor-pointer ${
-                    branch.members > 0
-                      ? "hover:bg-primary/5 hover:border-primary/20 border border-transparent"
-                      : "opacity-60 hover:bg-gray-50 border border-transparent"
-                  }`}
-                  onClick={() => onBranchClick?.(branch.id)}
-                >
-                  <div className="relative">
-                    <div
-                      className={`rounded-full ${
-                        branch.members <= 0
-                          ? "bg-gray-300 w-2.5 h-2.5"
-                          : branch.members <= 5
-                            ? "bg-red-400 w-3 h-3"
-                            : branch.members <= 10
-                              ? "bg-red-500 w-3.5 h-3.5"
-                              : "bg-red-600 w-4 h-4"
-                      }`}
-                    />
-                    {branch.members > 0 && (
-                      <div className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] bg-yellow-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center px-1 border border-white">
-                        {branch.members}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-medium text-gray-700 truncate">
-                      {branch.name}
-                    </div>
-                    <div className="text-[10px] text-gray-500">
-                      {branch.members > 0
-                        ? `${branch.members} anggota`
-                        : "Belum ada"}
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -945,25 +809,23 @@ export default function MembersPage() {
     <div className="min-h-screen bg-gray-100">
       {/* Header - Minimalist & Clean */}
       <header className="bg-primary border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
-        <div className="px-6 py-4">
+        <div className="px-6 py-1">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex gap-4 items-center justify-center">
-                  <h1 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
-                    Anggota PDSKKI
-                  </h1>
-                  <span className="text-xs py-1 px-3 rounded-full border border-yellow-500 text-yellow-500">
-                    Official Website
-                  </span>
-                </div>
+            <div className="flex flex-row justify-between items-center gap-4">
+              <div className="flex gap-4 items-center justify-center">
+                <h1 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                  Anggota PDSKKI
+                </h1>
+                <span className="text-xs py-1 px-3 rounded-full border border-yellow-500 text-yellow-500">
+                  Official Website
+                </span>
               </div>
 
               <div className="flex items-center gap-4">
                 <Image
                   src={PDSKKILogo}
                   alt="PDSKKI Logo"
-                  className="w-16 h-16 object-contain"
+                  className="w-14 h-14 object-contain"
                 />
               </div>
             </div>
@@ -979,7 +841,7 @@ export default function MembersPage() {
           {/* Filter Section - Modern Glassmorphism */}
           <div
             id="filter-section"
-            className="bg-white/80 backdrop-blur-md rounded-3xl shadow-sm border border-gray-200/50 p-6 mb-8 transition-all duration-300"
+            className="bg-white/80 backdrop-blur-md rounded-3xl shadow-sm border border-gray-200/50 p-4 mb-8 transition-all duration-300"
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
@@ -1036,12 +898,12 @@ export default function MembersPage() {
             </div>
 
             {/* Filter Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="relative group">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-primary transition-colors" />
                 <Input
                   placeholder="Cari nama, NPA, atau kota..."
-                  className="pl-10 border-gray-200 focus:border-primary focus:ring-primary/20 rounded-xl h-11"
+                  className="pl-10 border-gray-200 focus:border-primary focus:ring-primary/20 rounded-xl"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
