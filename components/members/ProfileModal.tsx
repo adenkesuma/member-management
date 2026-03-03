@@ -120,7 +120,7 @@ export default function ProfileModal({
           {/* Header Info */}
           <div className="bg-gray-50 rounded-xl p-6">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
-              <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
+              <Avatar className="h-16 w-16 border-4 border-white shadow-lg">
                 <AvatarImage src={member.photo} />
                 <AvatarFallback className="bg-yellow-500 text-white text-2xl">
                   {getInitials(member.name)}
@@ -131,10 +131,12 @@ export default function ProfileModal({
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-gray-900">
+                      <h2 className="text-lg font-bold text-gray-900">
                         {member.name}
                       </h2>
-                      <Badge className={`${getStatusColor(member.status)}`}>
+                      <Badge
+                        className={`text-sm ${getStatusColor(member.status)}`}
+                      >
                         {member.status === "active"
                           ? "Aktif"
                           : member.status === "inactive"
@@ -142,16 +144,16 @@ export default function ProfileModal({
                             : "Dalam Proses"}
                       </Badge>
                     </div>
-                    <p className="text-lg text-primary font-medium">
+                    <p className="text-sm text-primary font-medium">
                       {member.specialization}
                     </p>
 
                     <div className="flex flex-wrap gap-3 mt-4">
-                      <div className="flex items-center gap-2 text-sm">
+                      <div className="flex items-center gap-2 text-xs">
                         <UserCheck className="h-4 w-4 text-gray-500" />
                         <span className="font-medium">{member.npa}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm">
+                      <div className="flex items-center gap-2 text-xs">
                         <Calendar className="h-4 w-4 text-gray-500" />
                         <span>Bergabung {member.yearJoined}</span>
                       </div>
@@ -179,15 +181,17 @@ export default function ProfileModal({
           {/* Contact & Location */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="font-bold text-gray-900 flex items-center gap-2">
+              <h3 className="font-bold text-gray-900 text-base flex items-center gap-2">
                 Lokasi & Praktik
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-gray-400 mt-0.5" />
                   <div>
-                    <p className="font-medium text-gray-900">{member.city}</p>
-                    <Badge variant="outline" className="mt-1">
+                    <p className="font-medium text-gray-900 text-sm">
+                      {member.city}
+                    </p>
+                    <Badge variant="outline" className="mt-1 text-xs">
                       {getBranchLabel(member.branch)}
                     </Badge>
                   </div>
@@ -195,25 +199,29 @@ export default function ProfileModal({
                 <div className="flex items-center gap-3">
                   <Building2 className="h-5 w-5 text-gray-400" />
                   <div>
-                    <p className="font-medium text-gray-900">Tempat Praktik</p>
-                    <p className="text-gray-600">{member.practiceType}</p>
+                    <p className="font-medium text-gray-900 text-sm">
+                      Tempat Praktik
+                    </p>
+                    <p className="text-gray-600 text-xs">
+                      {member.practiceType}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-bold text-gray-900 flex items-center gap-2">
+              <h3 className="font-bold text-gray-900 text-base flex items-center gap-2">
                 Kontak
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-gray-400" />
                   <div>
-                    <p className="font-medium text-gray-900">Email</p>
+                    <p className="font-medium text-gray-900 text-sm">Email</p>
                     <a
                       href={`mailto:${member.email}`}
-                      className="text-primary hover:underline"
+                      className="text-primary hover:underline text-xs"
                     >
                       {member.email}
                     </a>
@@ -223,10 +231,12 @@ export default function ProfileModal({
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5 text-gray-400" />
                     <div>
-                      <p className="font-medium text-gray-900">Telepon</p>
+                      <p className="font-medium text-gray-900 text-sm">
+                        Telepon
+                      </p>
                       <a
                         href={`tel:${member.phone}`}
-                        className="text-primary hover:underline"
+                        className="text-primary hover:underline text-xs"
                       >
                         {member.phone}
                       </a>
@@ -239,7 +249,7 @@ export default function ProfileModal({
 
           {/* Professional Info */}
           <div className="border-t pt-6 space-y-6">
-            <h3 className="font-bold text-gray-900 flex items-center gap-2">
+            <h3 className="font-bold text-base text-gray-900 flex items-center gap-2">
               Informasi Profesional
             </h3>
 
@@ -248,9 +258,9 @@ export default function ProfileModal({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <FileText className="h-4 w-4" />
-                    <span>STR</span>
+                    <span className="text-sm">STR</span>
                   </div>
-                  <p className="font-medium">{member.strNumber}</p>
+                  <p className="font-medium text-xs">{member.strNumber}</p>
                 </div>
               )}
 
@@ -258,9 +268,9 @@ export default function ProfileModal({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <FileText className="h-4 w-4" />
-                    <span>SIP</span>
+                    <span className="text-sm">SIP</span>
                   </div>
-                  <p className="font-medium">{member.sipNumber}</p>
+                  <p className="font-medium text-xs">{member.sipNumber}</p>
                 </div>
               )}
 
@@ -268,9 +278,9 @@ export default function ProfileModal({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Award className="h-4 w-4" />
-                    <span>Jenis Keanggotaan</span>
+                    <span className="text-sm">Jenis Keanggotaan</span>
                   </div>
-                  <p className="font-medium">{member.membershipType}</p>
+                  <p className="font-medium text-xs">{member.membershipType}</p>
                 </div>
               )}
             </div>
@@ -278,7 +288,7 @@ export default function ProfileModal({
             {/* Education */}
             {member.education && member.education.length > 0 && (
               <div className="space-y-3">
-                <h4 className="font-medium text-gray-900 flex items-center gap-2">
+                <h4 className="font-medium text-gray-900 text-sm flex items-center gap-2">
                   <GraduationCap className="h-4 w-4" />
                   Pendidikan
                 </h4>
@@ -286,7 +296,7 @@ export default function ProfileModal({
                   {member.education.map((edu, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
-                      <span className="text-gray-700">{edu}</span>
+                      <span className="text-gray-700 text-xs">{edu}</span>
                     </li>
                   ))}
                 </ul>
@@ -297,7 +307,9 @@ export default function ProfileModal({
             {member.clinicalInterests &&
               member.clinicalInterests.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-medium text-gray-900">Minat Klinis</h4>
+                  <h4 className="font-medium text-gray-900 text-sm">
+                    Minat Klinis
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {member.clinicalInterests.map((interest, index) => (
                       <Badge
@@ -316,7 +328,7 @@ export default function ProfileModal({
           {/* Social Media */}
           {member.socialMedia && (
             <div className="space-y-4 pt-4 border-t">
-              <h3 className="font-medium text-gray-900">
+              <h3 className="text-sm font-medium text-gray-900">
                 Media Sosial Profesional
               </h3>
               <div className="flex gap-4">
@@ -325,7 +337,7 @@ export default function ProfileModal({
                     href={member.socialMedia.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary hover:text-blue-800"
+                    className="flex text-xs items-center gap-2 text-primary hover:text-blue-800"
                   >
                     <div className="p-2 bg-blue-50 rounded-lg">
                       <span className="font-bold">in</span>
@@ -338,7 +350,7 @@ export default function ProfileModal({
                     href={member.socialMedia.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary hover:text-primary"
+                    className="flex text-xs items-center gap-2 text-primary hover:text-primary"
                   >
                     <div className="p-2 bg-blue-50 rounded-lg">
                       <span className="font-bold">𝕏</span>
