@@ -6,6 +6,8 @@ import PaymentSummary from "@/components/dashboard/PaymentSummary";
 import UpcomingPayments from "@/components/dashboard/UpcomingPayments";
 import MembershipStatus from "@/components/dashboard/MembershipStatus";
 import QuickPaymentActions from "@/components/dashboard/QuickPaymentActions";
+import Image from "next/image";
+import Logo from "@/public/pdskki.png";
 import RecentTransactions from "@/components/dashboard/RecentTransactions";
 import {
   Card,
@@ -48,13 +50,16 @@ export default function DashboardPage() {
       <header className="bg-white border-b">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Dashboard Pembayaran Member
-              </h1>
-              <p className="text-gray-600 text-sm">
-                Selamat datang kembali, Dr. John Doe!
-              </p>
+            <div className="flex items-center gap-4">
+              <Image src={Logo} alt="logo" className="w-16" />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  Dashboard Pembayaran Member
+                </h1>
+                <p className="text-gray-600 text-sm">
+                  Selamat datang kembali, Dr. John Doe!
+                </p>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right hidden md:block">

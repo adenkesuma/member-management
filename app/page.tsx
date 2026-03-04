@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/layout/Footer";
 
 interface Member {
   id: number;
@@ -1216,6 +1217,8 @@ export default function MembersPage() {
           )}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

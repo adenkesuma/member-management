@@ -29,6 +29,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/public/pdskki.png";
 
 export default function PaymentsPage() {
   const [yearFilter, setYearFilter] = useState<string>("");
@@ -47,13 +49,16 @@ export default function PaymentsPage() {
                   <ArrowLeft className="size-8" />
                 </Button>
               </Link>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  Semua Riwayat Pembayaran
-                </h1>
-                <p className="text-gray-600">
-                  Detail lengkap semua transaksi pembayaran iuran
-                </p>
+              <div className="flex items-center gap-4">
+                <Image src={Logo} alt="logo" className="w-16" />
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    Semua Riwayat Pembayaran
+                  </h1>
+                  <p className="text-gray-600">
+                    Detail lengkap semua transaksi pembayaran iuran
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-3">
