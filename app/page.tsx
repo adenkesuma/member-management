@@ -276,7 +276,7 @@ function IndonesiaMap({
       </div>
 
       {/* Maps Container - Background Image dengan Markers Dinamis */}
-      <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-4 bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-inner">
+      <div className="hidden lg:block relative w-full h-[500px] rounded-2xl overflow-hidden mb-4 bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-inner">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
